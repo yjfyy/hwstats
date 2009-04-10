@@ -129,7 +129,7 @@ if ($gnum=="" or $gnum=="all") { #если номер игры пустой, то показать все игры..
 	if ($gnum=="")  $gresult="WHERE (p1name='$hwplayer' or p2name='$hwplayer') and clienttag='SEXP'"; #если игрок me_bot и игры все показываются
 	else $gresult="WHERE clienttag='SEXP'";
 		
-		$result = MYSQL_QUERY("SELECT count(uid) FROM $table_reports $gresult;"); 
+		$result = MYSQL_QUERY("SELECT count(*) FROM $table_reports $gresult;"); 
 		$games_count=mysql_result($result,0);#кол-во игр игрока
 
 		
