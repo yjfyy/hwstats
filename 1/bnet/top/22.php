@@ -1,0 +1,21 @@
+<?
+$rating0="918";
+$wins0="9";
+$looses0="13";
+$disconnects0="0";
+$last0="LOSS";
+$wins1="9";
+$looses1="4";
+$disconnects1="2";
+$last1="DRAW";
+$rank="22";
+$name="Saracin_[SINF]";
+$id="5";
+$owner="RAZOR 1911";
+$ip="10.1.4.79";
+$highrating="1025";
+$highrank="22";
+$lastgame="BroodWar";
+$lasttime="10:54:96";
+$allgames=$wins0+$looses0+$wins1+$looses1;
+?>

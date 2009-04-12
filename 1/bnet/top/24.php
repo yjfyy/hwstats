@@ -1,0 +1,21 @@
+<?
+$rating0="878";
+$wins0="2";
+$looses0="8";
+$disconnects0="0";
+$last0="WIN";
+$wins1="0";
+$looses1="1";
+$disconnects1="0";
+$last1="DRAW";
+$rank="24";
+$name="virus";
+$id="12";
+$owner="RAZOR 1911";
+$ip="10.1.4.28";
+$highrating="1000";
+$highrank="24";
+$lastgame="BroodWar";
+$lasttime="10:56:43";
+$allgames=$wins0+$looses0+$wins1+$looses1;
+?>

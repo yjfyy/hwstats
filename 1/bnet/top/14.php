@@ -1,0 +1,21 @@
+<?
+$rating0="986";
+$wins0="0";
+$looses0="1";
+$disconnects0="0";
+$last0="LOSS";
+$wins1="0";
+$looses1="0";
+$disconnects1="0";
+$last1="Never Played";
+$rank="14";
+$name="[latex]Nimlos";
+$id="53";
+$owner="abc";
+$ip="10.1.9.67";
+$highrating="1000";
+$highrank="14";
+$lastgame="BroodWar";
+$lasttime="10:82:45";
+$allgames=$wins0+$looses0+$wins1+$looses1;
+?>
