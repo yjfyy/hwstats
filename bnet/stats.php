@@ -15,7 +15,7 @@
                             <TD class=rankingHeader align=middle><A class=button href="">Wins</A></TD>
                             <TD class=rankingHeader align=middle><A class=button href="">Losses</A></TD>
                             <TD class=rankingHeader align=middle><A class=button href="">Draws</A></TD>
-                            <TD class=rankingHeader><A class=button href="">Games</A></TD>
+                            <TD class=rankingHeader><A class=button href="">All Games</A></TD>
                             <TD class=rankingHeader><A class=button href="">Last</A></TD>
                            
 			    
