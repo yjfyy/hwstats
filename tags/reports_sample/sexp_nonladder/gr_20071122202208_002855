@@ -1,0 +1,51 @@
+name="1" id=#002855
+clienttag=SEXP type="top vs bottom" option="1 vs all"
+created="Thu Nov 22 19:41:49 Russian Stan20071122202208" started="Thu Nov 22 19:42:59 Russian Stan20071122202208" ended="Thu Nov 22 20:22:08 Russian Stan20071122202208"
+mapfile="Binary Burghs" mapauth="Self-Made" mapsize=96x96 tileset="Badlands"
+joins=2 maxplayers=2
+host=213.234.232.242:25106
+
+
+mamaRasta        LOSS    
+Lexus            WIN     
+
+
+<map>Binary Burghs</map>
+
+<leagueid>0</leagueid>
+<gameid>0x5c360df4</gameid>
+<race>Protoss</race>
+<time>2342</time>
+
+  <score overall="39849" units="17800" structures="6875" resources="15174"/>
+
+  <units score="17800" produced="41" killed="32" lost="29"/>
+
+  <structures score="6875" constructed="36" razed="7" lost="20"/>
+
+  <resources score="15174" gas="4624" minerals="10550" spent="13940"/>
+
+<map>Binary Burghs</map>
+
+<leagueid>0</leagueid>
+<gameid>0x548ce3e8</gameid>
+<race>Protoss</race>
+<time>2346</time>
+
+  <score overall="68983" units="25430" structures="12475" resources="31078"/>
+
+  <units score="25430" produced="136" killed="29" lost="32"/>
+
+  <structures score="12475" constructed="45" razed="20" lost="7"/>
+
+  <resources score="31078" gas="10056" minerals="21022" spent="23585"/>
+
+
+
+mamaRasta's normal record is now 0/1/0 (0 draws)
+Lexus's normal record is now 1/0/0 (0 draws)
+
+mamaRasta's standard ladder record is now 0/0/0 (rating 0 [#00000]) (0 draws)
+Lexus's standard ladder record is now 0/0/0 (rating 0 [#00000]) (0 draws)
+
+This game lasted 39 minutes (elapsed).

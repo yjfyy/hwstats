@@ -1,0 +1,21 @@
+<?
+$rating0="1184";
+$wins0="14";
+$looses0="9";
+$disconnects0="0";
+$last0="WIN";
+$wins1="10";
+$looses1="5";
+$disconnects1="2";
+$last1="DRAW";
+$rank="4";
+$name="DrAdolF";
+$id="9";
+$owner="Syl Dr.AdolF";
+$ip="10.1.8.62";
+$highrating="1184";
+$highrank="4";
+$lastgame="BroodWar";
+$lasttime="10:54:42";
+$allgames=$wins0+$looses0+$wins1+$looses1;
+?>

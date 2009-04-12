@@ -1,0 +1,51 @@
+name="R1" id=#002880
+clienttag=SEXP type="melee" option="normal"
+created="Thu Nov 22 20:01:15 Russian Stan20071122203544" started="Thu Nov 22 20:02:45 Russian Stan20071122203544" ended="Thu Nov 22 20:35:44 Russian Stan20071122203544"
+mapfile="Untitled Scenario" mapauth="Self-Made" mapsize=256x256 tileset="Badlands"
+joins=2 maxplayers=8
+host=87.117.35.3:25106
+
+
+Rusty            WIN      rating=1050 [#00005]  prob=57.1%  K=50  adj=+21
+FoX-Forever      LOSS     rating=1000 [#00074]  prob=42.9%  K=50  adj=-21
+
+
+<map>Untitled Scenario</map>
+
+<leagueid>0</leagueid>
+<gameid>0xfa96cf69</gameid>
+<race>Terran</race>
+<time>1978</time>
+
+  <score overall="170475" units="69100" structures="25285" resources="76090"/>
+
+  <units score="69100" produced="186" killed="93" lost="120"/>
+
+  <structures score="25285" constructed="119" razed="46" lost="38"/>
+
+  <resources score="76090" gas="26520" minerals="49570" spent="55550"/>
+
+<map>Untitled Scenario</map>
+
+<leagueid>0</leagueid>
+<gameid>0x92ef598d</gameid>
+<race>Terran</race>
+<time>1977</time>
+
+  <score overall="103637" units="41625" structures="16050" resources="45962"/>
+
+  <units score="41625" produced="138" killed="120" lost="91"/>
+
+  <structures score="16050" constructed="46" razed="42" lost="43"/>
+
+  <resources score="45962" gas="15616" minerals="30346" spent="31684"/>
+
+
+
+Rusty's normal record is now 6/5/0 (2 draws)
+FoX-Forever's normal record is now 0/1/0 (0 draws)
+
+Rusty's standard ladder record is now 7/13/0 (rating 1071 [#00004]) (5 draws)
+FoX-Forever's standard ladder record is now 0/1/0 (rating 979 [#00075]) (0 draws)
+
+This game lasted 32 minutes (elapsed).
