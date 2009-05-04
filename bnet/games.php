@@ -141,7 +141,7 @@ if ($gnum=="" or $gnum=="all") { #если номер игры пустой, то показать все игры..
 		
 		echo "<p><b>Ladder games ($games_count)"; 
 			if ($gnum!="" and $gnum!="all") echo " > Single game full info"; 
-	echo "</b> (<FONT COLOR='#C0C0C0'>обновлено сегодня в "; 
+	echo "</b> (<FONT COLOR='#C0C0C0'>updated today at "; 
 	
 	DiePlease($path_lastupdate);
 	echo date ( "H:i", filemtime($path_lastupdate) );

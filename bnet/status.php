@@ -45,7 +45,14 @@
 //   U-238 (mark@darkterrorsdomain.cjb.net)                                                   //
 //                                                                                            //
 // ------------------------------------------------------------------------------------------ //
-function ServerStatusFile($statusfile) // Path to server.dat
+
+/**
+* return html list of current players and games
+*
+* @param	string $statusfile = server.xml
+* @return	string
+*/
+function ServerStatusFile($statusfile)
 {
 
 	// What info should be shown?
