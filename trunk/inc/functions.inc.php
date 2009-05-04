@@ -1,23 +1,6 @@
 <?
-function filtch($str){
-	$str=ereg_replace("'",'`',$str);
-	$str=ereg_replace("\n","<br>",$str);
-	return $str;
-}
 
-function unfiltch($str){
-	$str=ereg_replace('`',"'",$str);
-	$str=ereg_replace("<br>","\n",$str);
-
-	return $str;
-}
-
-function parse_sqltext($str){ #для того, чтобы не было sql неправильных запросов
-	$str=ereg_replace("'",'&#8217;',$str);
-
-	return $str;
-}
-
+// return safe value from $_GET array
 function GETGetValue($name)
 {
 	if (isset($_GET))
@@ -28,36 +11,15 @@ function GETGetValue($name)
 	return false;
 }
 
-function txthtml($str){
-	$str=ereg_replace("<","&#60;",$str);
-	$str=ereg_replace(">","&#62;",$str);
-	return $str;
-}
 
-function delete_script($str){
-	$str=ereg_replace("<?","<#",$str);
-	$str=ereg_replace("script","sсript",$str);
-	return $str;
-}
-
-function r_date($string, $output) #replace date
-{
-	if ($string!="") {
-		$year=strval(substr($string,0,2));
-		$month=strval(substr($string,2,2));
-		$day=strval(substr($string,4,2));
-		$hour=strval(substr($string,6,2));
-		$min=strval(substr($string,8,2));
-		$sec=strval(substr($string,10,2));
-
-		if ($output==0) $string="$day.$month.$year, <I>$hour:$min:$sec</I>";
-		if ($output==1) $string="$day.$month.$year";
-		if ($output==2) $string="$day";
-
-	}
-	return $string;
-}
-
+/**
+* Parses the original map name and adds the appropriate font tags according to the special characters we find
+* This can easily be replaced with span tags instead of font tags for XHTML compliance.
+* @copyright	http://repasm.free.fr/
+*
+* @param		string $mapName	map name
+* @return		string html map name
+*/
 function getColoredMapName($mapName)
 {
     $mapWithColors = "";
@@ -141,67 +103,17 @@ function getColoredMapName($mapName)
 }
 
 
-function case_month($month, $type=0) #insert form option date
-{ 
-	switch ($month) {
-		case 1: return "Январь"; break;
-		case 2: return "Февраль"; break;
-		case 3: return "Март"; break;
-		case 4: return "Апрель"; break;
-		case 5: return "Май"; break;
-		case 6: return "Июнь"; break;
-		case 7: return "Июль"; break;
-		case 8: return "Август"; break;
-		case 9: return "Сентябрь"; break;
-		case 10: return "Октябрь"; break;
-		case 11: return "Ноябрь"; break;
-		case 12: return "Декабрь"; break;
-	}
-}
-
-function insert_fdate($date, $prefix, $type) #insert form option date
-{ 
-	if ($date=="") $date=$realdate;
-
-	$day=gmdate("d",$date);
-	$month=gmdate("m",$date);
-	$year=gmdate("Y",$date);
-	$hour=gmdate("H",$date);
-	$minute=gmdate("i",$date);
-
-	echo "<select name='{$prefix}_day'>";
-	for ($i=1;$i!=32;$i++) {
-		echo "<option value='$i'";
-		if ($i==$day) echo " selected='true'";
-		echo ">$i</option>";
-	}
-	echo "</select>";
-
-	echo "<select name='{$prefix}_month'>";
-	for ($i=1;$i!=13;$i++) {
-		echo "<option value='$i'";
-		if ($i==$month) echo " selected='true'";
-		echo ">".case_month($i, 0)."</option>";
-	}
-	echo "</select>";
-
-	echo "<select name='{$prefix}_year'>";
-	for ($i=2003;$i!=2016;$i++) {
-		echo "<option value='$i'";
-		if ($i==$year) echo " selected='true'";
-		echo ">$i</option>";
-	}
-	echo "</select>";
-	if ($type==0) {
-		echo " в <input type='text' style='width: 25px' name='{$prefix}_hour' value='$hour' maxlength=2>:<input type='text' style='width: 25px' name='{$prefix}_minute' value='$minute' maxlength=2>";
-	}
-
-	#...
-
-
-}
-
-//функция вывода номеров страниц
+/**
+* Page navigator 
+* @copyright	HarpyWar 2009
+*
+* @param		integer $page = current page number
+* @param		integer $rows_on_page = how many rows place on page
+* @param		integer $rows_count = all rows count
+* @param		integer $trim_count = how many pages shoud 
+* @param		string $query = browser address bar query (example index.php?x=1&y=2& - will replace to index.php?x=1&y=2&page=x)
+* @return		string html page navigator bordered by <DIV>
+*/
 function pageNavigator($page, $rows_on_page, $rows_count, $trim_count, $query) 
 {
 	$pages_count=ceil($rows_count/$rows_on_page); //всего страниц

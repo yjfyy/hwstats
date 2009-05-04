@@ -46,6 +46,12 @@
 //                                                                                            //
 // ------------------------------------------------------------------------------------------ //
 
+/**
+* return html colored red (offline) or green (online)
+*
+* @param	string $bnetip = pvpgn ip 
+* @return	string
+*/
 function ServerStatus($bnet_ip)
 {
 
