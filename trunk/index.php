@@ -1,4 +1,4 @@
-<?
+<?php
 	$time1 = time(); //стоит в начале скрипта
 	$time_m1 = microtime(); 
 
