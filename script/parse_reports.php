@@ -17,11 +17,12 @@ require (GetHWStatsPath($config) . 'inc/functions.inc.php');
 
 
 /**
-* return short game option
-*
-* @param 	string $option = "one on one" | "top vs bottom" | "free for all" | "Diablo II (closed)" | "Diablo II (open)" | "unknown"
-* @return 	string <= 8 chars
-*/
+ * Function returns short game option
+ *
+ * @param string $option variants: "one on one" | "top vs bottom" | "free for all" | "Diablo II (closed)" | "Diablo II (open)" | "unknown"
+ * @return string Full game option name
+ *
+ */
 function GetGameOption($option)
 {
 	switch ($option)
@@ -57,13 +58,13 @@ function GetRace($race)
 
 
 /**
-* return replay info from report file
+* Function returns replay info from report file
 * @copyright	HarpyWar 2009
 * @version		for pvpgn >= 1.8.x
 *
 * @param		string $filename	report filename
 * @param		string $template	report template filename
-* @return		array like option => value
+* @return		array Like option => value
 */
 function LoadReport($filename, $template)
 {
