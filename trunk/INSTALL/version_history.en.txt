@@ -1,15 +1,20 @@
 HarpyWar's Statistics for PvPGN (HWStats) v2.3
 Project homepage: http://harpywar.com/?a=projects&b=6
 
-History:
------- v2.3 --- 05 .04.2009 ---
+Version history:
+------ v2.3 --- 16.06.2009 ---
+- Removed unused code
+- Added functions description
+- Documentation translated to English
+
+------ v2.3 --- 05.04.2009 ---
 - Fixed output number of player rank
 - Added search by part of the player's nickname
 - Added option to show IP players
 - Added compression pages with gzip (optionally)
 - Corrected the errors and inaccuracies
 
------- v2.2 --- 23 .03.2009 ---
+------ v2.2 --- 23.03.2009 ---
 - Added search by player
 - Added paginal players output and it changed for a list of games
 - Improved security
