@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<status>
+		<Version>1.8.2</Version>
+		<Uptime>23 days 19 hours 15 minutes 4 seconds</Uptime>
+		<Users>
+		<Number>22</Number>
+		<user><name>Tomline7</name><clienttag>D2XP</clienttag><version>1.0.11.0</version></user>
+		<user><name>muka</name><clienttag>D2XP</clienttag><version>1.0.11.0</version></user>
+		<user><name>Ladder-win</name><clienttag>D2XP</clienttag><version>1.0.11.0</version></user>
+		<user><name>Tomline2</name><clienttag>D2XP</clienttag><version>1.0.11.0</version></user>
+		<user><name>Bravo21</name><clienttag>D2XP</clienttag><version>1.0.0.1</version></user>
+		<user><name>dva</name><clienttag>D2XP</clienttag><version>1.0.0.1</version></user>
+		<user><name>traxx</name><clienttag>D2XP</clienttag><version>1.0.11.0</version></user>
+		<user><name>1e</name><clienttag>D2XP</clienttag><version>1.0.0.1</version></user>
+		<user><name>1w</name><clienttag>D2XP</clienttag><version>1.0.0.1</version></user>
+		<user><name>1q</name><clienttag>D2XP</clienttag><version>1.0.0.1</version></user>
+		<user><name>rutb</name><clienttag>D2XP</clienttag><version>1.0.11.0</version></user>
+		<user><name>ruta</name><clienttag>D2XP</clienttag><version>1.0.11.0</version></user>
+		<user><name>yzasnui</name><clienttag>D2XP</clienttag><version>1.0.0.1</version></user>
+		<user><name>111</name><clienttag>D2XP</clienttag><version>1.0.0.1</version></user>
+		<user><name>Zloypodolsk</name><clienttag>W3XP</clienttag><version>1.22.0.184</version></user>
+		<user><name>andrey78</name><clienttag>WWOL</clienttag><version></version></user>
+		<user><name>Nikarus2</name><clienttag>WWOL</clienttag><version></version></user>
+		<user><name>Nikarus1</name><clienttag>WWOL</clienttag><version></version></user>
+		<user><name>Phoenix1</name><clienttag>WWOL</clienttag><version></version></user>
+		<user><name>StelZzz</name><clienttag>WWOL</clienttag><version></version></user>
+		<user><name>me_bot</name><clienttag>STAR</clienttag><version>1.1.3.11</version></user>
+		<user><name>all-seeing_eye</name><clienttag>IIRC</clienttag><version></version></user>
+		</Users>
+		<Games>
+		<Number>2</Number>
+		<game><name>Cs3</name><clienttag>D2XP</clienttag></game>
+		<game><name>123</name><clienttag>W3XP</clienttag></game>
+		</Games>
+		<Channels>
+		<Number>21</Number>
+		<channel>The Void</channel>
+		<channel>Brood War</channel>
+		<channel>Brood War</channel>
+		<channel>Tournament</channel>
+		<channel>Brood War</channel>
+		<channel>Diablo II</channel>
+		<channel>Brood War</channel>
+		<channel>Diablo II</channel>
+		<channel>Diablo II</channel>
+		<channel>Warcraft 3</channel>
+		<channel>Tournament</channel>
+		<channel>Chat</channel>
+		<channel>Backstage</channel>
+		<channel>Help</channel>
+		<channel>Lob 18 0</channel>
+		<channel>Lob 18 1</channel>
+		<channel>Lob 18 2</channel>
+		<channel>Lob 33 0</channel>
+		<channel>Lob 33 1</channel>
+		<channel>Lob 41 0</channel>
+		<channel>Lob 41 1</channel>
+		</Channels>
+</status>
