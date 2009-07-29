@@ -4,22 +4,19 @@
 // mysql settings
 
 $hostname="127.0.0.1";
-$username="dbuser";
-$password="dbpass";
+$username="root";
+$password="";
 
 
 $db_bnet="bnet"; //pvpgn database
-$bnet_ip="games.utech.ru"; //pvpgn server address for all
+$bnet_ip="127.0.0.1"; //pvpgn external server address
 
 $table_reports="hwreports";
 $table_bnet="bnet";
 $table_record="record";
 $table_profile="profile";
 
-
-$reports_all="/full_path_to/var/reports/"; // full path to pvpgn reports
-$path_statusfile="var/server.xml"; // full_path_to var/server.xml
-
+$PVPGN_PATH = "/usr/local/pvpgn/"; // full path to PVPGN (example: I:\\SERVERS\\PVPGN\\185\\pvpgn-1.8.5\\bin\\)
 
 $games_on_page = 20; // games count on page
 $players_on_page = 40; // players count on page
@@ -34,6 +31,8 @@ $min_search_symbols = 3;
 
 ///--- do not change
 
+$reports_all = $PVPGN_PATH . "var/reports/"; 
+$path_statusfile = $PVPGN_PATH . "var/server.xml";
 
 // copy parsed reports from pvpgn dir to:
 $reports_sexp_ladder="reports/reports_sexp_ladder/"; # SEXP ladder 

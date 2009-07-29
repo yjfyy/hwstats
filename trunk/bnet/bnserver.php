@@ -1,4 +1,4 @@
-<?
+<?php
 #showstart
 $strCaption="Battle.net server statistics";
 
