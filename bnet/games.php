@@ -11,8 +11,6 @@ $gnum=GETGetValue("g");
 	if ($gnum!="") 
 		echo '<p><b>Game info</b></p>';
 
-MYSQL_CONNECT($hostname,$username,$password) OR DIE("Не могу создать соединение ");
-mysql_select_db($db_bnet) or die("Can not select database");
 
 $gnum=mysql_escape_string($gnum); // filter
 
@@ -322,7 +320,7 @@ if ($gnum=="" or $gnum=="all") { #если номер игры пустой, то показать все игры..
 			if ($r_p2result=="DISCONNE") $r_p2race="DISC"; elseif ($r_p2result=="DRAW") $r_p2race=="DRAW"; else require ("bnet/games/gameinfo.php");
 	}
 }
-MYSQL_CLOSE();
+
 
 if ($gnum=="" or $gnum=="all") { #если показыывается список игр, то отобразить страницы
 	echo "<tr><td colspan=10 align=right><small>";

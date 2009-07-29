@@ -1,7 +1,10 @@
-HarpyWar's Statistics for PvPGN (HWStats) v2.3
+HarpyWar's Statistics for PvPGN (HWStats) v2.32
 Project homepage: http://harpywar.com/?a=projects&b=6
 
 Version history:
+------v2.32---29.07.2009--- 
+- fixed errors on first start
+
 ------ v2.3 --- 16.06.2009 ---
 - Removed unused code
 - Added functions description

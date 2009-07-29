@@ -24,10 +24,6 @@ if ($show_player_ip) echo '<TD class=rankingHeader align=middle><A class=button 
 
 echo "</TR>";
 
-MYSQL_CONNECT($hostname,$username,$password) OR DIE("Не могу создать соединение ");
-mysql_select_db($db_bnet) or die("Can not select database");
-
-
 $limit_time=gmmktime() - 2592000 * 5;
 $lim_first = $current_page*$players_on_page-$players_on_page;
 
@@ -131,7 +127,7 @@ for ($i=0;$i<$number;$i++)
 	#echo $pp.$txtstat;
 
 }
-MYSQL_CLOSE();
+
 
 	echo "<tr><td colspan=10><small>";
 	

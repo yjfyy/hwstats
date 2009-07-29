@@ -1,4 +1,4 @@
-<?
+<?php
 
 // return safe value from $_GET array
 function GETGetValue($name)

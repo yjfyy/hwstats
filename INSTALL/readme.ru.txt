@@ -1,4 +1,4 @@
-HarpyWar's Statistics for PvPGN (HWStats) v2.3
+HarpyWar's Statistics for PvPGN (HWStats) v2.31
 
 Страничка проекта: http://harpywar.com/?a=projects&b=6
 

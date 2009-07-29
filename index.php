@@ -4,7 +4,7 @@
 
 require ("inc/config.inc.php");
 require ("inc/functions.inc.php");
-	
+
 	
 $hwgame=GETGetValue("game");
 $hwtype=GETGetValue("type");
@@ -20,6 +20,9 @@ $current_page=GETGetValue("page");
 
 if ( $hwgame == "SEXP")
 {
+	$mysql = MYSQL_CONNECT($hostname,$username,$password) OR DIE("Не могу создать соединение ");
+	mysql_select_db($db_bnet, $mysql) or die("Can not select database");
+	
 	require ("inc/start.html");
 	if ( $hwplayer or $searchLike ) // if exact search by player, show the player
 	{
@@ -29,7 +32,7 @@ if ( $hwgame == "SEXP")
 	{
 		require ("bnet/stats.php");
 	}
-
+	MYSQL_CLOSE($mysql);
 }
 elseif ( $hwgame == "PVPGN")
 {
