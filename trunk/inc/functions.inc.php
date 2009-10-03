@@ -163,6 +163,11 @@ function DiePlease($path)
 		echo ("<h3>I am noob, because file: <div>&nbsp;" . $path . "</div> not exists :(</h3>");
 }
 
+function ShowError($text)
+{
+    echo sprintf("<div class=error>%s</div>", $text);
+    die();
+}
 /*
 // создать папку
 function CreateFolder($path)

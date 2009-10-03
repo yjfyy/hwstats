@@ -1,2 +1,4 @@
-;CHANGE "full_path_to" TO REAL PATHES
-full_path_to\php.exe full_path_to\script\parse_reports.php
+;CHANGE "full_path_to" TO REAL PATH
+
+cd full_path_to/hwstats/script/
+"C:\Program files\php\php.exe" parse_reports.php

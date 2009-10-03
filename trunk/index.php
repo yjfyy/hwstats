@@ -1,4 +1,6 @@
 <?php
+#error_reporting(0);
+
 	$time1 = time(); // page generation time start
 	$time_m1 = microtime(); 
 

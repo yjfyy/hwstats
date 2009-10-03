@@ -2,18 +2,18 @@
 // PVPGN REPORT PARSER
 // (c) 2006-2009, HarpyWar
 
-$config = "full_path_to/inc/config.inc.php"; // full path to config.inc.php
+// IMPORTANT: To run this script setup shell script for cron "script\start\parse_reports*"
 
 
-// возвращает абсолютный путь к папке с hwstats, через файл конфига
-function GetHWStatsPath($config)
+// path to hwstats directory
+function GetHWStatsPath()
 {
-	$path = str_replace("inc/config.inc.php", "", $config); // удалить конфиг
-	return $path; 
+        $path = "../";
+	return $path;
 }
 
-require ($config);
-require (GetHWStatsPath($config) . 'inc/functions.inc.php'); 
+require (GetHWStatsPath() . "inc/config.inc.php");
+require (GetHWStatsPath() . "inc/functions.inc.php");
 
 
 /**
@@ -37,11 +37,23 @@ function GetGameOption($option)
 			$text = "d2closed"; break;
 		case "Diablo II (open)":
 			$text = "d2open"; break;
-		
+
 		default:
-			$text = "unknown"; 
+			$text = "unknown";
 	}
 	return $text;
+}
+
+/**
+* parse dates from string
+*
+* @param	string created="%s" started="%s" ended="%s", dates may be null
+* @return	array (created, started, ended)
+*/
+function GetGameDateInfo($str)
+{
+	preg_match_all("/\"([^\"]*)\"/", $str, $dates);
+	return $dates[1];
 }
 
 /**
@@ -54,6 +66,7 @@ function GetRace($race)
 {
 	if (!$race)
 		return "x3";
+        return $race;
 }
 
 
@@ -70,111 +83,114 @@ function LoadReport($filename, $template)
 {
 	$template = file_get_contents($template);
 	$content = file_get_contents($filename);
-	
-	
+
+	$host = "";
+	$port = 6112;
 	// if host found
 	if ( $hostport = strstr($content, "host=") )
 	{
 		list($host, $port) = sscanf($hostport, "host=%[^:]:%u"); // get host and port
 		$content = ereg_replace("host=[^\n]+\n", "", $content); // delete host string
 	}
-		
-	
+
 	$ri = sscanf( $content, $template ); // report info
-	
+
+		$dates = GetGameDateInfo($ri[5]);
+
 		$info=array(
 		//game info
 			"GameName" => $ri[0],
 			"GameID" => $ri[1],
 			"ClientTag" => $ri[2],
-			"GameType" => $ri[3],
-			"GameOption" => GetGameOption($ri[4]), // game option should be < 8 characters
-			"GameCreated" => $ri[5],
-			"GameStarted" => $ri[6],
+			"GameType" => GetGameOption($ri[3]),
+			"GameOption" => $ri[4], // game option should be < 8 characters
+			"GameCreated" => $dates[0],
+			"GameStarted" => $dates[1],
 			"GameEnded" => filemtime($filename),
-			"Map" => $ri[8],
-			"MapAuth" => $ri[9],
-			"MapSize" => sprintf("%ux%u", $ri[10], $ri[11]),
-			"TileSet" => $ri[12],
-			"Joins" => $ri[13],
-			"MaxPlayers" => $ri[14],
+
+			"Map" => $ri[6],
+			"MapAuth" => $ri[7],
+			"MapSize" => sprintf("%ux%u", $ri[8], $ri[9]),
+			"TileSet" => $ri[10],
+			"Joins" => $ri[11],
+			"MaxPlayers" => $ri[12],
 			"Host" => $host,
 			"Port" => $port,
 
 		//player1 info
-			"p1Name" => $ri[15],
-			"p1Result" => $ri[16],
-			"p1Rating" => $ri[17],
-			"p1Num" => $ri[18],
-			"p1Prob" => $ri[19],
-			"p1K" => $ri[20],
-			"p1Adj" => $ri[21],
+			"p1Name" => $ri[13],
+			"p1Result" => $ri[14],
+			"p1Rating" => $ri[15],
+			"p1Num" => $ri[16],
+			"p1Prob" => $ri[17],
+			"p1K" => $ri[18],
+			"p1Adj" => $ri[19],
 
 		//player2 info
-			"p2Name" => $ri[22],
-			"p2Result" => $ri[23],
-			"p2Rating" => $ri[24],
-			"p2Num" => $ri[25],
-			"p2Prob" => $ri[26],
-			"p2K" => $ri[27],
-			"p2Adj" => $ri[28],
+			"p2Name" => $ri[20],
+			"p2Result" => $ri[21],
+			"p2Rating" => $ri[22],
+			"p2Num" => $ri[23],
+			"p2Prob" => $ri[24],
+			"p2K" => $ri[25],
+			"p2Adj" => $ri[26],
 
 		//player1 results
-			"p1Map" => $ri[29], // do not insert
-			"p1League" => $ri[30], // do not insert
-			"p1GameID" => $ri[31], // do not insert
+			"p1Map" => $ri[27], // do not insert
+			"p1League" => $ri[28], // do not insert
+			"p1GameID" => $ri[29], // do not insert
 
-			"p1Race" => GetRace($ri[32]), 
-			"p1Time" => $ri[33], 
-			"p1ScoreOverall" => $ri[34],
-				"p1Units" => $ri[35],
-				"p1Structures" => $ri[36],
-				"p1Resources" => $ri[37],
-			"p1UnitsScore" => $$ri[38],
-				"p1Produced" => $ri[39],
-				"p1Killed" => $ri[40],
-				"p1LostU" => $ri[41],
-			"p1StructuresScore" => $ri[42],
-				"p1Constructed" => $ri[43],
-				"p1Razed" => $ri[44],
-				"p1LostS" => $ri[45],
-			"p1ResourcesScore" => $ri[46],
-				"p1Gas" => $ri[47],
-				"p1Minerals" => $ri[48],
-				"p1Spent" => $ri[49],
+			"p1Race" => GetRace($ri[30]),
+			"p1Time" => $ri[31],
+			"p1ScoreOverall" => $ri[32],
+				"p1Units" => $ri[33],
+				"p1Structures" => $ri[34],
+				"p1Resources" => $ri[35],
+			"p1UnitsScore" => $ri[36],
+				"p1Produced" => $ri[37],
+				"p1Killed" => $ri[38],
+				"p1LostU" => $ri[39],
+			"p1StructuresScore" => $ri[40],
+				"p1Constructed" => $ri[41],
+				"p1Razed" => $ri[42],
+				"p1LostS" => $ri[43],
+			"p1ResourcesScore" => $ri[44],
+				"p1Gas" => $ri[45],
+				"p1Minerals" => $ri[46],
+				"p1Spent" => $ri[47],
 
 		//player1 results
-			"p1Map" => $ri[50], // do not insert
-			"p1League" => $ri[51], // do not insert
-			"p1GameID" => $ri[52], // do not insert
+			"p1Map" => $ri[48], // do not insert
+			"p1League" => $ri[49], // do not insert
+			"p1GameID" => $ri[50], // do not insert
 
-			"p2Race" => GetRace($ri[53]),
-			"p2Time" => $ri[54],
-			"p2ScoreOverall" => $ri[55],
-				"p2Units" => $ri[56],
-				"p2Structures" => $ri[57],
-				"p2Resources" => $ri[58],
-			"p2UnitsScore" => $ri[59],
-				"p2Produced" => $ri[60],
-				"p2Killed" => $ri[61],
-				"p2LostU" => $ri[62],
-			"p2StructuresScore" => $ri[63],
-				"p2Constructed" => $ri[64],
-				"p2Razed" => $ri[65],
-				"p2LostS" => $ri[66],
-			"p2ResourcesScore" => $ri[67],
-				"p2Gas" => $ri[68],
-				"p2Minerals" => $ri[69],
-				"p2Spent" => $ri[70],
+			"p2Race" => GetRace($ri[51]),
+			"p2Time" => $ri[52],
+			"p2ScoreOverall" => $ri[53],
+				"p2Units" => $ri[54],
+				"p2Structures" => $ri[55],
+				"p2Resources" => $ri[56],
+			"p2UnitsScore" => $ri[57],
+				"p2Produced" => $ri[58],
+				"p2Killed" => $ri[59],
+				"p2LostU" => $ri[60],
+			"p2StructuresScore" => $ri[61],
+				"p2Constructed" => $ri[62],
+				"p2Razed" => $ri[63],
+				"p2LostS" => $ri[64],
+			"p2ResourcesScore" => $ri[65],
+				"p2Gas" => $ri[66],
+				"p2Minerals" => $ri[67],
+				"p2Spent" => $ri[68],
 
 		//game result
-			"p1NormalRecord" => sprintf("%u/%u/%u", $ri[72], $ri[73], $ri[74]),
-			"p2NormalRecord" => sprintf("%u/%u/%u", $ri[77], $ri[78], $ri[79]),
+			"p1NormalRecord" => sprintf("%u/%u/%u", $ri[70], $ri[71], $ri[72]),
+			"p2NormalRecord" => sprintf("%u/%u/%u", $ri[75], $ri[76], $ri[77]),
 
-			"p1LadderRecord" => sprintf("%u/%u/%u", $ri[82], $ri[83], $ri[84]),
-			"p2LadderRecord" => sprintf("%u/%u/%u", $ri[89], $ri[90], $ri[91]),
+			"p1LadderRecord" => sprintf("%u/%u/%u", $ri[80], $ri[81], $ri[82]),
+			"p2LadderRecord" => sprintf("%u/%u/%u", $ri[87], $ri[88], $ri[89]),
 
-			"GameDuration" => $ri[95],
+			"GameDuration" => $ri[93],
 
 		);
 	return $info;
@@ -186,9 +202,9 @@ MYSQL_CONNECT($hostname,$username,$password) OR DIE("Can not create connection")
 
 foreach (glob( $reports_all."*") as $filename) { #пройти все файлы
 	$report_file=basename($filename); #real file name
-	$repinfo=LoadReport($filename, GetHWStatsPath($config) . $report_tpl); #parse each file of di
-	
-echo $repinfo['ClientTag'];
+	$repinfo=LoadReport($filename, GetHWStatsPath() . $report_tpl); #parse each file of di
+
+#echo $repinfo['ClientTag'];
 
 	//exists report in mysql?
 	//$result = MYSQL_QUERY("SELECT filename FROM $table_reports WHERE filename='$report_file' LIMIT 1");
@@ -271,91 +287,91 @@ echo $repinfo['ClientTag'];
 			`gameduration`
 	  )
 		VALUES (
-			'".$report_file."', 
-			'".$repinfo['GameName']."', 
-			'".$repinfo['GameID']."', 
-			'".$repinfo['ClientTag']."', 
-			'".$repinfo['GameType']."', 
-			'".$repinfo['GameOption']."', 
-			'".$repinfo['GameCreated']."', 
-			'".$repinfo['GameStarted']."', 
-			'".$repinfo['GameEnded']."', 
-			'".$repinfo['Map']."', 
-			'".$repinfo['MapAuth']."', 
-			'".$repinfo['MapSize']."', 
-			'".$repinfo['TileSet']."', 
-			'".$repinfo['Joins']."', 
-			'".$repinfo['MaxPlayers']."', 
-			'".$repinfo['Host']."', 
-			'".$repinfo['Port']."', 
-			'".$repinfo['p1Name']."', 
-			'".$repinfo['p1Result']."', 
-			'".$repinfo['p1Rating']."', 
-			'".$repinfo['p1Num']."', 
-			'".$repinfo['p1Prob']."', 
-			'".$repinfo['p1K']."', 
-			'".$repinfo['p1Adj']."', 
-			'".$repinfo['p2Name']."', 
-			'".$repinfo['p2Result']."', 
-			'".$repinfo['p2Rating']."', 
-			'".$repinfo['p2Num']."', 
-			'".$repinfo['p2Prob']."', 
-			'".$repinfo['p2K']."', 
-			'".$repinfo['p2Adj']."', 
-			'".$repinfo['p1Race']."', 
-			'".$repinfo['p1Time']."', 
-			'".$repinfo['p1ScoreOverall']."', 
-			'".$repinfo['p1Units']."', 
-			'".$repinfo['p1Structures']."', 
-			'".$repinfo['p1Resources']."', 
-			'".$repinfo['p1UnitsScore']."', 
-			'".$repinfo['p1Produced']."', 
-			'".$repinfo['p1Killed']."', 
-			'".$repinfo['p1LostU']."', 
-			'".$repinfo['p1StructuresScore']."', 
-			'".$repinfo['p1Constructed']."', 
-			'".$repinfo['p1Razed']."', 
-			'".$repinfo['p1LostS']."', 
-			'".$repinfo['p1ResourcesScore']."', 
-			'".$repinfo['p1Gas']."', 
-			'".$repinfo['p1Minerals']."', 
-			'".$repinfo['p1Spent']."', 
-			'".$repinfo['p2Race']."', 
-			'".$repinfo['p2Time']."', 
-			'".$repinfo['p2ScoreOverall']."', 
+			'".$report_file."',
+			'".$repinfo['GameName']."',
+			'".$repinfo['GameID']."',
+			'".$repinfo['ClientTag']."',
+			'".$repinfo['GameType']."',
+			'".$repinfo['GameOption']."',
+			'".$repinfo['GameCreated']."',
+			'".$repinfo['GameStarted']."',
+			'".$repinfo['GameEnded']."',
+			'".$repinfo['Map']."',
+			'".$repinfo['MapAuth']."',
+			'".$repinfo['MapSize']."',
+			'".$repinfo['TileSet']."',
+			'".$repinfo['Joins']."',
+			'".$repinfo['MaxPlayers']."',
+			'".$repinfo['Host']."',
+			'".$repinfo['Port']."',
+			'".$repinfo['p1Name']."',
+			'".$repinfo['p1Result']."',
+			'".$repinfo['p1Rating']."',
+			'".$repinfo['p1Num']."',
+			'".$repinfo['p1Prob']."',
+			'".$repinfo['p1K']."',
+			'".$repinfo['p1Adj']."',
+			'".$repinfo['p2Name']."',
+			'".$repinfo['p2Result']."',
+			'".$repinfo['p2Rating']."',
+			'".$repinfo['p2Num']."',
+			'".$repinfo['p2Prob']."',
+			'".$repinfo['p2K']."',
+			'".$repinfo['p2Adj']."',
+			'".$repinfo['p1Race']."',
+			'".$repinfo['p1Time']."',
+			'".$repinfo['p1ScoreOverall']."',
+			'".$repinfo['p1Units']."',
+			'".$repinfo['p1Structures']."',
+			'".$repinfo['p1Resources']."',
+			'".$repinfo['p1UnitsScore']."',
+			'".$repinfo['p1Produced']."',
+			'".$repinfo['p1Killed']."',
+			'".$repinfo['p1LostU']."',
+			'".$repinfo['p1StructuresScore']."',
+			'".$repinfo['p1Constructed']."',
+			'".$repinfo['p1Razed']."',
+			'".$repinfo['p1LostS']."',
+			'".$repinfo['p1ResourcesScore']."',
+			'".$repinfo['p1Gas']."',
+			'".$repinfo['p1Minerals']."',
+			'".$repinfo['p1Spent']."',
+			'".$repinfo['p2Race']."',
+			'".$repinfo['p2Time']."',
+			'".$repinfo['p2ScoreOverall']."',
 			'".$repinfo['p2Units']."',
-			'".$repinfo['p2Structures']."', 
-			'".$repinfo['p2Resources']."', 
-			'".$repinfo['p2UnitsScore']."', 
-			'".$repinfo['p2Produced']."',					
-			'".$repinfo['p2Killed']."', 
-			'".$repinfo['p2LostU']."', 
-			'".$repinfo['p2StructuresScore']."', 
+			'".$repinfo['p2Structures']."',
+			'".$repinfo['p2Resources']."',
+			'".$repinfo['p2UnitsScore']."',
+			'".$repinfo['p2Produced']."',
+			'".$repinfo['p2Killed']."',
+			'".$repinfo['p2LostU']."',
+			'".$repinfo['p2StructuresScore']."',
 			'".$repinfo['p2Constructed']."',
-			'".$repinfo['p2Razed']."', 
-			'".$repinfo['p2LostS']."', 
-			'".$repinfo['p2ResourcesScore']."', 
+			'".$repinfo['p2Razed']."',
+			'".$repinfo['p2LostS']."',
+			'".$repinfo['p2ResourcesScore']."',
 			'".$repinfo['p2Gas']."',
-			'".$repinfo['p2Minerals']."', 
+			'".$repinfo['p2Minerals']."',
 			'".$repinfo['p2Spent']."',
-			'".$repinfo['p1NormalRecord']."', 
-			'".$repinfo['p2NormalRecord']."', 
-			'".$repinfo['p1LadderRecord']."', 
+			'".$repinfo['p1NormalRecord']."',
+			'".$repinfo['p2NormalRecord']."',
+			'".$repinfo['p1LadderRecord']."',
 			'".$repinfo['p2LadderRecord']."',
 			'".$repinfo['GameDuration']."'
 		);");
 
 			// если путь к репортам SEXP ladder существует, 
-			if (file_exists(GetHWStatsPath($config) . $reports_sexp_ladder)) {
-				rename ($filename, GetHWStatsPath($config) . $reports_sexp_ladder . $report_file); #...move to reports_sexp_ladder
-				echo "<br>".$report_file." was moved to ".GetHWStatsPath($config) . $reports_sexp_ladder; #info message
+			if (file_exists(GetHWStatsPath() . $reports_sexp_ladder)) {
+				rename ($filename, GetHWStatsPath() . $reports_sexp_ladder . $report_file); #...move to reports_sexp_ladder
+				echo "<br>".$report_file." was moved to ".GetHWStatsPath() . $reports_sexp_ladder; #info message
 							
-			} else echo GetHWStatsPath($config) . "$reports_sexp_ladder not exists!";
+			} else echo GetHWStatsPath() . "$reports_sexp_ladder not exists!";
 
 		
 	} 
 	// если же репорт существует и он из diablo
-	elseif (file_exists($filename)==true and ($repinfo['ClientTag']=="D2XP" or $repinfo['ClientTag']=="DRTL" or $repinfo['ClientTag']=="D2DV")) 
+	elseif (file_exists($filename)==true and ($repinfo['ClientTag']=="D2XP" or $repinfo['ClientTag']=="DRTL" or $repinfo['ClientTag']=="D2DV"))
 	{
 
 		$result = MYSQL_QUERY("SELECT acct_username FROM $table_bnet WHERE acct_lastlogin_ip='".$repinfo['Host']."' ORDER BY acct_lastlogin_time DESC LIMIT 1");
@@ -384,25 +400,25 @@ echo $repinfo['ClientTag'];
 			`gameduration`
 		  )
 			VALUES (
-			'".$report_file."', 
-			'".$repinfo['GameName']."', 
-			'".$repinfo['GameID']."', 
-			'".$repinfo['ClientTag']."', 
-			'".$repinfo['GameType']."', 
-			'".$repinfo['GameOption']."', 
-			'".$repinfo['GameCreated']."', 
-			'".$repinfo['GameStarted']."', 
-			'".$repinfo['GameEnded']."', 
-			'".$repinfo['Map']."', 
-			'".$repinfo['MapAuth']."', 
-			'".$repinfo['MapSize']."', 
-			'".$repinfo['TileSet']."', 
-			'".$repinfo['Joins']."', 
-			'".$repinfo['MaxPlayers']."', 
-			'".$repinfo['Host']."', 
-			'".$repinfo['Port']."', 
-			'".$repinfo['p1Name']."', 
-			'".$repinfo['p2Name']."', 
+			'".$report_file."',
+			'".$repinfo['GameName']."',
+			'".$repinfo['GameID']."',
+			'".$repinfo['ClientTag']."',
+			'".$repinfo['GameType']."',
+			'".$repinfo['GameOption']."',
+			'".$repinfo['GameCreated']."',
+			'".$repinfo['GameStarted']."',
+			'".$repinfo['GameEnded']."',
+			'".$repinfo['Map']."',
+			'".$repinfo['MapAuth']."',
+			'".$repinfo['MapSize']."',
+			'".$repinfo['TileSet']."',
+			'".$repinfo['Joins']."',
+			'".$repinfo['MaxPlayers']."',
+			'".$repinfo['Host']."',
+			'".$repinfo['Port']."',
+			'".$repinfo['p1Name']."',
+			'".$repinfo['p2Name']."',
 			'".$repinfo['GameDuration']."'
 		);");
 
@@ -413,9 +429,9 @@ echo $repinfo['ClientTag'];
 	} else { #if other game...
 	
 			if (file_exists($filename)) {
-				rename ($filename, GetHWStatsPath($config) . $reports_others. $report_file); #...move to reports_sexp_ladder
-				echo "<br>".$report_file." was moved to ". GetHWStatsPath($config) . $reports_others; #info message
-			} else echo GetHWStatsPath($config) . "$reports_others not exists!";
+				rename ($filename, GetHWStatsPath() . $reports_others. $report_file); #...move to reports_sexp_ladder
+				echo "<br>".$report_file." was moved to ". GetHWStatsPath() . $reports_others; #info message
+			} else echo GetHWStatsPath() . "$reports_others not exists!";
 	}
 
 
@@ -426,7 +442,7 @@ MYSQL_CLOSE();
 
 #записать дату последнего обновления
 		$text=date("H:i");
-		$f = fopen(GetHWStatsPath($config) . "bnet/top/lastupdate.txt", "w");
+		$f = fopen(GetHWStatsPath() . "bnet/top/lastupdate.txt", "w");
 		   fwrite($f,$text); // Пишем в файл содержимое строки $text;
 		fclose($f);
 #/записать дату последнего обновления

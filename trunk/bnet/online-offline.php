@@ -67,7 +67,7 @@ function ServerStatus($bnet_ip)
 	// Connection timeout in seconds.  If the script cannot connect to a server before this timeout,
 	// then that server is considered to be offline.  Don't make this too big or your website could
 	// take a long time to load.
-	$timeout = 1;
+	$timeout = 0.3;
 
 	$pvpgn = array(
 		'check' => true,             // Should we check the status of the PvPGN server? (true or false)
@@ -124,7 +124,7 @@ function ServerStatus($bnet_ip)
 			$output .= "</p>\n";
 		}
 	}
-
+/*
 	if ($d2realm['check']) {
 		$d2realm_online = false;
 		if ($fp = @fsockopen($d2realm['d2cs']['ip'], $d2realm['d2cs']['port'], $errno, $errstr, $timeout)) {
@@ -153,6 +153,7 @@ function ServerStatus($bnet_ip)
 			$output .= "</p>\n";
 		}
 	}
-	return $output;
+*/
+	return $pvpgn_online;
 }
 ?>

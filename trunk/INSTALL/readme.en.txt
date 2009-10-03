@@ -7,12 +7,11 @@ Project homepage: http://harpywar.com/?a=projects&b=6
 		Ladder_games = "melee, oneonone"
 		disc_is_loss = true (not required, but it is desirable for players)
 		Output_update_secs = 60
-		XML_status_output = false
+		XML_status_output = true
 
 2. The files which you need to change the pathes:
 		config.inc.php
-		/script/parse_reports.php ($config)
-		/script/start/parse_reports (shell to run the script)
+		/script/start/parse_reports* (shell to run the php script)
 
 3. Next, you'll need insert hwreports.sql to your pvpgn "bnet" database
 

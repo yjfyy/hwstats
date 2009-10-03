@@ -18,7 +18,7 @@
                             <TD class=rankingRow><font color=#B35900><?php echo $alldraws; ?></font></TD>
                             <TD class=rankingRow><?php echo $allgames; ?></TD>
                             <TD class=rankingRow><b><?php if($p_SEXP_1_last_game_result=="WIN"){echo "Win";} elseif($p_SEXP_1_last_game_result=="LOSS"){echo "Loss";} else {echo "None";} ?></b></TD>
-			    <TD  class=rankingRow align=right><b><?php if ($show_player_ip) echo $p_acct_lastlogin_ip; ?></b></TD>
+			    <TD  class=rankingRow align=right><b><?php if ($show_player_ip and isset($p_acct_lastlogin_ip)) echo $p_acct_lastlogin_ip; ?></b></TD>
 
 			    </TR>
 <!--  -->

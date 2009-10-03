@@ -9,14 +9,15 @@ $password="";
 
 
 $db_bnet="bnet"; //pvpgn database
-$bnet_ip="127.0.0.1"; //pvpgn external server address
+DEFINE ("EXTERNAL_ADDRESS", "localhost"); // pvpgn external server address
+DEFINE ("SHOW_CHANNELS", false); // show channel list in server status page?
 
 $table_reports="hwreports";
 $table_bnet="bnet";
 $table_record="record";
 $table_profile="profile";
 
-$PVPGN_PATH = "/usr/local/pvpgn/"; // full path to PVPGN (example: I:\\SERVERS\\PVPGN\\185\\pvpgn-1.8.5\\bin\\)
+$PVPGN_PATH = "I:\\SERVERS\\PVPGN\\185\\pvpgn-1.8.5\\bin\\"; // full path to PVPGN (example: I:\\SERVERS\\PVPGN\\185\\pvpgn-1.8.5\\bin\\)
 
 $games_on_page = 20; // games count on page
 $players_on_page = 40; // players count on page
@@ -32,7 +33,7 @@ $min_search_symbols = 3;
 ///--- do not change
 
 $reports_all = $PVPGN_PATH . "var/reports/"; 
-$path_statusfile = $PVPGN_PATH . "var/server.xml";
+DEFINE ("STATUS_FILE", $PVPGN_PATH . "var/status/server.xml");
 
 // copy parsed reports from pvpgn dir to:
 $reports_sexp_ladder="reports/reports_sexp_ladder/"; # SEXP ladder 
@@ -46,7 +47,7 @@ $report_tpl = "script/report.tpl"; // template for report parse
 if (isset($_SERVER['REMOTE_ADDR'])) #ip for user account
 	$nip = $_SERVER['REMOTE_ADDR']; 
 else 
-	$nip="127.0.0.1";
+	$nip="localhost";
 
 $curdate=gmdate("ymd"); // current date
 $curtime=gmdate("His"); // current time

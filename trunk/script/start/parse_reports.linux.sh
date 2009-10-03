@@ -1,4 +1,5 @@
 #!/bin/bash
 
 #CHANGE "full_path_to" TO REAL PATH
-/usr/local/bin/php full_path_to/script/parse_reports.php
+cd full_path_to/hwstats/script/
+/usr/local/bin/php parse_reports.php

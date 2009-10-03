@@ -1,12 +1,14 @@
 <?php
 $gnum=GETGetValue("g");
 
-	if ($rank[$i]==1): $img1="GOSU";
-	elseif ($rank[$i]==2): $img1="GOS3";
-	elseif ($rank[$i]==3): $img1="HAS2";
-	elseif ($rank[$i]==4): $img1="CHO1";
-	else: $img1="NEWB";
-	endif;
+if (isset($rank))
+{
+	if ($rank[$i]==1) $img1="GOSU";
+	elseif ($rank[$i]==2) $img1="GOS3";
+	elseif ($rank[$i]==3) $img1="HAS2";
+	elseif ($rank[$i]==4) $img1="CHO1";
+	else $img1="NEWB";
+}
 
 	if ($gnum!="") 
 		echo '<p><b>Game info</b></p>';
@@ -111,7 +113,7 @@ else
 	                                                   <TD class=rankingHeader align=middle><div class=button>&nbsp;<div></TD>
 			</TR>
 
-	<?
+	<?php
 
 }
 
@@ -127,8 +129,11 @@ if ($gnum=="" or $gnum=="all") { #если номер игры пустой, то показать все игры..
 	if ($gnum=="")  $gresult="WHERE (p1name='$hwplayer' or p2name='$hwplayer') and clienttag='SEXP'"; #если игрок me_bot и игры все показываются
 	else $gresult="WHERE clienttag='SEXP'";
 		
-		$result = MYSQL_QUERY("SELECT count(*) FROM $table_reports $gresult;"); 
-		$games_count=mysql_result($result,0);#кол-во игр игрока
+		$result = MYSQL_QUERY("SELECT count(*) FROM $table_reports $gresult;", $mysql);
+                if (!$result)
+                    ShowError("Please, create table `hwreports`");
+                    
+                $games_count=mysql_result($result,0);#кол-во игр игрока
 
 		
 		$result = MYSQL_QUERY("SELECT uid, filename, map, gameid, gameended, p1name, p1race, p1rating, p1adj, p2name, p2race, p2rating, p2adj FROM $table_reports $gresult ORDER BY uid DESC LIMIT $lim_first,$games_on_page;"); #выбираем игры игрока
@@ -153,7 +158,7 @@ if ($gnum=="" or $gnum=="all") { #если номер игры пустой, то показать все игры..
 <!---->
 
 
-	<?
+	<?php
 
 	if ($number>0) { #если есть игры
 	
@@ -299,7 +304,7 @@ if ($gnum=="" or $gnum=="all") { #если номер игры пустой, то показать все игры..
 
 			require ("bnet/games/game.php"); #неполная информация об игре
 
-			if ($preplace=1) { #и переделать обратно, чтобы не было изменений в инфе игры
+			if ($preplace==1) { #и переделать обратно, чтобы не было изменений в инфе игры
 				$r_pname=$r_p1name;
 				$r_prace=$r_p1race; 
 				$r_prating=$r_p1rating; 
@@ -341,5 +346,3 @@ if ($gnum=="" or $gnum=="all") { #если показыывается список игр, то отобразить с
 
 
 ?>
-
-
