@@ -65,7 +65,7 @@ echo '</table><table>
           <td class="rankingHeader" width="100" height="21">Last game</td>
           <td class="rankingHeader" width="100" height="21">Last owner</td>
           ';
-		  if ($show_player_ip) echo '<td class="rankingHeader" width="150 height="21">IP-adress</td>';
+		  if (SHOW_PLAYER_IP) echo '<td class="rankingHeader" width="150 height="21">IP-adress</td>';
 		  
         echo '</tr>
         <tr>
@@ -92,7 +92,7 @@ echo '</table><table>
           </td>
           <td class="rankingrow" width="234">
             ';
-			if ($show_player_ip) echo $p_acct_lastlogin_ip;
+			if (SHOW_PLAYER_IP) echo $p_acct_lastlogin_ip;
 			
           echo '</td>
         </tr>

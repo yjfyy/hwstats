@@ -20,7 +20,7 @@
                            
 			    
 <?php
-if ($show_player_ip) echo '<TD class=rankingHeader align=middle><A class=button href="">IP adress</A></TD>';
+if (SHOW_PLAYER_IP) echo '<TD class=rankingHeader align=middle><A class=button href="">IP adress</A></TD>';
 
 echo "</TR>";
 
@@ -36,25 +36,25 @@ if ( $searchPlayer )
 		
 	/*
 		// long search #1
-		$result = MYSQL_QUERY("SELECT uid, SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws FROM $table_record 
-		WHERE uid IN ( SELECT uid FROM $table_bnet WHERE acct_username $condition ) 
+		$result = MYSQL_QUERY("SELECT uid, SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws FROM ".TABLE_RECORD." 
+		WHERE uid IN ( SELECT uid FROM ".TABLE_BNET." WHERE acct_username $condition ) 
 		ORDER BY SEXP_1_rating DESC;");
 
 		// long search #2
-		$result = MYSQL_QUERY("SELECT {$table_record}.uid,SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws, 
-		{$table_bnet}.acct_username, {$table_bnet}.acct_lastlogin_ip, {$table_bnet}.acct_lastlogin_time
-		FROM $table_record  LEFT JOIN $table_bnet
-		ON {$table_record}.uid = {$table_bnet}.uid
+		$result = MYSQL_QUERY("SELECT ".TABLE_RECORD.".uid,SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws, 
+		".TABLE_BNET.".acct_username, ".TABLE_BNET.".acct_lastlogin_ip, ".TABLE_BNET.".acct_lastlogin_time
+		FROM ".TABLE_RECORD."  LEFT JOIN ".TABLE_BNET."
+		ON ".TABLE_RECORD.".uid = ".TABLE_BNET.".uid
 		WHERE username $condition ORDER BY SEXP_1_rating DESC;");
 	*/	
 	
 		// fast search
 		$result = MYSQL_QUERY("SELECT record.uid, record.SEXP_1_last_game_result, record.SEXP_1_rating, record.SEXP_1_rank, record.SEXP_0_wins, record.SEXP_0_losses, record.SEXP_0_disconnects, record.SEXP_1_wins, record.SEXP_1_losses, record.SEXP_0_draws,record.SEXP_1_draws,
-		{$table_bnet}.acct_username, {$table_bnet}.acct_lastlogin_ip, {$table_bnet}.acct_lastlogin_time
-		FROM $table_bnet
-		LEFT JOIN $table_record
-		ON {$table_bnet}.uid = {$table_record}.uid
-		WHERE username $condition and {$table_record}.SEXP_1_rank > 0;");
+		".TABLE_BNET.".acct_username, ".TABLE_BNET.".acct_lastlogin_ip, ".TABLE_BNET.".acct_lastlogin_time
+		FROM ".TABLE_BNET."
+		LEFT JOIN ".TABLE_RECORD."
+		ON ".TABLE_BNET.".uid = ".TABLE_RECORD.".uid
+		WHERE username $condition and ".TABLE_RECORD.".SEXP_1_rank > 0;");
 
 	
 		$players_count = mysql_num_rows($result);
@@ -67,7 +67,7 @@ if ( $searchPlayer )
 // иначе выбрать всех игроков
 else
 {	
-	$result = MYSQL_QUERY("SELECT (select count(*) from $table_record) as count, uid, SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws FROM $table_record 
+	$result = MYSQL_QUERY("SELECT (select count(*) from ".TABLE_RECORD.") as count, uid, SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws FROM ".TABLE_RECORD." 
 	ORDER BY SEXP_1_rating DESC LIMIT $lim_first,$players_on_page;");
 
 	$players_count = mysql_result($result,0,"count");
@@ -103,7 +103,7 @@ for ($i=0;$i<$number;$i++)
 	}
 	else
 	{
-		$result2 = MYSQL_QUERY("SELECT acct_username, acct_lastlogin_ip,acct_lastlogin_time FROM $table_bnet WHERE uid='$p_uid' LIMIT 1");
+		$result2 = MYSQL_QUERY("SELECT acct_username, acct_lastlogin_ip,acct_lastlogin_time FROM ".TABLE_BNET." WHERE uid='$p_uid' LIMIT 1");
 		$j = 0;
 	}
 	

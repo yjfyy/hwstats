@@ -1,4 +1,4 @@
-HarpyWar's Statistics for PvPGN (HWStats) v2.31
+HarpyWar's Statistics for PvPGN (HWStats)
 
 Страничка проекта: http://harpywar.com/?a=projects&b=6
 
@@ -9,18 +9,12 @@ HarpyWar's Statistics for PvPGN (HWStats) v2.31
 	output_update_secs = 60
 	XML_status_output = true
 
-2. Файлы, в которых нужно изменить пути:
-	config.inc.php
-	/script/start/parse_reports* (шелл для запуска php скрипта)
+2. Откройте install.php через браузер и следуйте инструкции установки
 
-3. Далее необходимо в pvpgn бд mysql (bnet) вставить новую таблицу из файла hwreports.sql
-
-3.1. Сравнить record_alter.sql с полями в базе данных PvPGN "record" (добавить недостающие). Там все необходимые поля для разных игр бнета, которых нет в базе по-умолчанию, но используются pvpgn'ом. В логах пвпгна без них иногда возникают ошибки при попытке записи.
-
-3.2 Создать индекс в таблице "record" для поля SEXP_1_rating (необязательно, но немного быстрее будет выполняться запрос вывода списка игроков)
-
-4. /script/parse_reports.php скрипт надо запускать через определенный промежуток времени, чтобы заносить результаты игр Starcraft в бд mysql. 
+3. Скрипт "hwstats\script\start\parse_reports" надо запускать через определенный промежуток времени (например, 5 минут), чтобы заносить результаты игр Starcraft в бд mysql.
 Подробнее о циклическом запуске скриптов см. http://harpywar.com/?a=articles&b=4&c=0&d=31
 
 --
 HWStats licensed under GPL (http://www.gnu.org/copyleft/gpl.html)
+
+Если у вас есть предложения по улучшению или багрепорт - оставьте своё сообщение на http://code.google.com/p/hwstats/issues/list или на форуме http://forums.harpywar.com/ в разделе "PvPGN > Дополнения"

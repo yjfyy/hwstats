@@ -1,6 +1,7 @@
 <?php
 // PVPGN REPORT PARSER
 // (c) 2006-2009, HarpyWar
+// http://harpywar.com
 
 // IMPORTANT: To run this script setup shell script for cron "script\start\parse_reports*"
 
@@ -8,8 +9,8 @@
 // path to hwstats directory
 function GetHWStatsPath()
 {
-        $path = "../";
-	return $path;
+    $path = "../";
+    return $path;
 }
 
 require (GetHWStatsPath() . "inc/config.inc.php");
@@ -25,194 +26,194 @@ require (GetHWStatsPath() . "inc/functions.inc.php");
  */
 function GetGameOption($option)
 {
-	switch ($option)
-	{
-		case "one on one":
-			$text = "one"; break;
-		case "top vs bottom":
-			$text = "top"; break;
-		case "free for all":
-			$text = "ffa"; break;
-		case "Diablo II (closed)":
-			$text = "d2closed"; break;
-		case "Diablo II (open)":
-			$text = "d2open"; break;
+    switch ($option)
+    {
+        case "one on one":
+            $text = "one"; break;
+        case "top vs bottom":
+            $text = "top"; break;
+        case "free for all":
+            $text = "ffa"; break;
+        case "Diablo II (closed)":
+            $text = "d2closed"; break;
+        case "Diablo II (open)":
+            $text = "d2open"; break;
 
-		default:
-			$text = "unknown";
-	}
-	return $text;
+        default:
+            $text = "unknown";
+    }
+    return $text;
 }
 
 /**
-* parse dates from string
-*
-* @param	string created="%s" started="%s" ended="%s", dates may be null
-* @return	array (created, started, ended)
-*/
+ * parse dates from string
+ *
+ * @param	string created="%s" started="%s" ended="%s", dates may be null
+ * @return	array (created, started, ended)
+ */
 function GetGameDateInfo($str)
 {
-	preg_match_all("/\"([^\"]*)\"/", $str, $dates);
-	return $dates[1];
+    preg_match_all("/\"([^\"]*)\"/", $str, $dates);
+    return $dates[1];
 }
 
 /**
-* return player race
-*
-* @param	string $race = "Zerg" | "Protoss" | "Terran" | "" (NULL)
-* @return	string not null
-*/
+ * return player race
+ *
+ * @param	string $race = "Zerg" | "Protoss" | "Terran" | "" (NULL)
+ * @return	string not null
+ */
 function GetRace($race)
 {
-	if (!$race)
-		return "x3";
-        return $race;
+    if (!$race)
+        return "x3";
+    return $race;
 }
 
 
 /**
-* Function returns replay info from report file
-* @copyright	HarpyWar 2009
-* @version		for pvpgn >= 1.8.x
-*
-* @param		string $filename	report filename
-* @param		string $template	report template filename
-* @return		array Like option => value
-*/
+ * Function returns replay info from report file
+ * @copyright	HarpyWar 2009
+ * @version		for pvpgn >= 1.8.x
+ *
+ * @param		string $filename	report filename
+ * @param		string $template	report template filename
+ * @return		array Like option => value
+ */
 function LoadReport($filename, $template)
 {
-	$template = file_get_contents($template);
-	$content = file_get_contents($filename);
+    $template = file_get_contents($template);
+    $content = file_get_contents($filename);
 
-	$host = "";
-	$port = 6112;
-	// if host found
-	if ( $hostport = strstr($content, "host=") )
-	{
-		list($host, $port) = sscanf($hostport, "host=%[^:]:%u"); // get host and port
-		$content = ereg_replace("host=[^\n]+\n", "", $content); // delete host string
-	}
+    $host = "";
+    $port = 6112;
+    // if host found
+    if ( $hostport = strstr($content, "host=") )
+    {
+        list($host, $port) = sscanf($hostport, "host=%[^:]:%u"); // get host and port
+        $content = ereg_replace("host=[^\n]+\n", "", $content); // delete host string
+    }
 
-	$ri = sscanf( $content, $template ); // report info
+    $ri = sscanf( $content, $template ); // report info
 
-		$dates = GetGameDateInfo($ri[5]);
+    $dates = GetGameDateInfo($ri[5]);
 
-		$info=array(
-		//game info
-			"GameName" => $ri[0],
-			"GameID" => $ri[1],
-			"ClientTag" => $ri[2],
-			"GameType" => GetGameOption($ri[3]),
-			"GameOption" => $ri[4], // game option should be < 8 characters
-			"GameCreated" => $dates[0],
-			"GameStarted" => $dates[1],
-			"GameEnded" => filemtime($filename),
+    $info=array(
+        //game info
+        "GameName" => $ri[0],
+        "GameID" => $ri[1],
+        "ClientTag" => $ri[2],
+        "GameType" => GetGameOption($ri[3]),
+        "GameOption" => $ri[4], // game option should be < 8 characters
+        "GameCreated" => $dates[0],
+        "GameStarted" => $dates[1],
+        "GameEnded" => filemtime($filename),
 
-			"Map" => $ri[6],
-			"MapAuth" => $ri[7],
-			"MapSize" => sprintf("%ux%u", $ri[8], $ri[9]),
-			"TileSet" => $ri[10],
-			"Joins" => $ri[11],
-			"MaxPlayers" => $ri[12],
-			"Host" => $host,
-			"Port" => $port,
+        "Map" => $ri[6],
+        "MapAuth" => $ri[7],
+        "MapSize" => sprintf("%ux%u", $ri[8], $ri[9]),
+        "TileSet" => $ri[10],
+        "Joins" => $ri[11],
+        "MaxPlayers" => $ri[12],
+        "Host" => $host,
+        "Port" => $port,
 
-		//player1 info
-			"p1Name" => $ri[13],
-			"p1Result" => $ri[14],
-			"p1Rating" => $ri[15],
-			"p1Num" => $ri[16],
-			"p1Prob" => $ri[17],
-			"p1K" => $ri[18],
-			"p1Adj" => $ri[19],
+        //player1 info
+        "p1Name" => $ri[13],
+        "p1Result" => $ri[14],
+        "p1Rating" => $ri[15],
+        "p1Num" => $ri[16],
+        "p1Prob" => $ri[17],
+        "p1K" => $ri[18],
+        "p1Adj" => $ri[19],
 
-		//player2 info
-			"p2Name" => $ri[20],
-			"p2Result" => $ri[21],
-			"p2Rating" => $ri[22],
-			"p2Num" => $ri[23],
-			"p2Prob" => $ri[24],
-			"p2K" => $ri[25],
-			"p2Adj" => $ri[26],
+        //player2 info
+        "p2Name" => $ri[20],
+        "p2Result" => $ri[21],
+        "p2Rating" => $ri[22],
+        "p2Num" => $ri[23],
+        "p2Prob" => $ri[24],
+        "p2K" => $ri[25],
+        "p2Adj" => $ri[26],
 
-		//player1 results
-			"p1Map" => $ri[27], // do not insert
-			"p1League" => $ri[28], // do not insert
-			"p1GameID" => $ri[29], // do not insert
+        //player1 results
+        "p1Map" => $ri[27], // do not insert
+        "p1League" => $ri[28], // do not insert
+        "p1GameID" => $ri[29], // do not insert
 
-			"p1Race" => GetRace($ri[30]),
-			"p1Time" => $ri[31],
-			"p1ScoreOverall" => $ri[32],
-				"p1Units" => $ri[33],
-				"p1Structures" => $ri[34],
-				"p1Resources" => $ri[35],
-			"p1UnitsScore" => $ri[36],
-				"p1Produced" => $ri[37],
-				"p1Killed" => $ri[38],
-				"p1LostU" => $ri[39],
-			"p1StructuresScore" => $ri[40],
-				"p1Constructed" => $ri[41],
-				"p1Razed" => $ri[42],
-				"p1LostS" => $ri[43],
-			"p1ResourcesScore" => $ri[44],
-				"p1Gas" => $ri[45],
-				"p1Minerals" => $ri[46],
-				"p1Spent" => $ri[47],
+        "p1Race" => GetRace($ri[30]),
+        "p1Time" => $ri[31],
+        "p1ScoreOverall" => $ri[32],
+        "p1Units" => $ri[33],
+        "p1Structures" => $ri[34],
+        "p1Resources" => $ri[35],
+        "p1UnitsScore" => $ri[36],
+        "p1Produced" => $ri[37],
+        "p1Killed" => $ri[38],
+        "p1LostU" => $ri[39],
+        "p1StructuresScore" => $ri[40],
+        "p1Constructed" => $ri[41],
+        "p1Razed" => $ri[42],
+        "p1LostS" => $ri[43],
+        "p1ResourcesScore" => $ri[44],
+        "p1Gas" => $ri[45],
+        "p1Minerals" => $ri[46],
+        "p1Spent" => $ri[47],
 
-		//player1 results
-			"p1Map" => $ri[48], // do not insert
-			"p1League" => $ri[49], // do not insert
-			"p1GameID" => $ri[50], // do not insert
+        //player1 results
+        "p1Map" => $ri[48], // do not insert
+        "p1League" => $ri[49], // do not insert
+        "p1GameID" => $ri[50], // do not insert
 
-			"p2Race" => GetRace($ri[51]),
-			"p2Time" => $ri[52],
-			"p2ScoreOverall" => $ri[53],
-				"p2Units" => $ri[54],
-				"p2Structures" => $ri[55],
-				"p2Resources" => $ri[56],
-			"p2UnitsScore" => $ri[57],
-				"p2Produced" => $ri[58],
-				"p2Killed" => $ri[59],
-				"p2LostU" => $ri[60],
-			"p2StructuresScore" => $ri[61],
-				"p2Constructed" => $ri[62],
-				"p2Razed" => $ri[63],
-				"p2LostS" => $ri[64],
-			"p2ResourcesScore" => $ri[65],
-				"p2Gas" => $ri[66],
-				"p2Minerals" => $ri[67],
-				"p2Spent" => $ri[68],
+        "p2Race" => GetRace($ri[51]),
+        "p2Time" => $ri[52],
+        "p2ScoreOverall" => $ri[53],
+        "p2Units" => $ri[54],
+        "p2Structures" => $ri[55],
+        "p2Resources" => $ri[56],
+        "p2UnitsScore" => $ri[57],
+        "p2Produced" => $ri[58],
+        "p2Killed" => $ri[59],
+        "p2LostU" => $ri[60],
+        "p2StructuresScore" => $ri[61],
+        "p2Constructed" => $ri[62],
+        "p2Razed" => $ri[63],
+        "p2LostS" => $ri[64],
+        "p2ResourcesScore" => $ri[65],
+        "p2Gas" => $ri[66],
+        "p2Minerals" => $ri[67],
+        "p2Spent" => $ri[68],
 
-		//game result
-			"p1NormalRecord" => sprintf("%u/%u/%u", $ri[70], $ri[71], $ri[72]),
-			"p2NormalRecord" => sprintf("%u/%u/%u", $ri[75], $ri[76], $ri[77]),
+        //game result
+        "p1NormalRecord" => sprintf("%u/%u/%u", $ri[70], $ri[71], $ri[72]),
+        "p2NormalRecord" => sprintf("%u/%u/%u", $ri[75], $ri[76], $ri[77]),
 
-			"p1LadderRecord" => sprintf("%u/%u/%u", $ri[80], $ri[81], $ri[82]),
-			"p2LadderRecord" => sprintf("%u/%u/%u", $ri[87], $ri[88], $ri[89]),
+        "p1LadderRecord" => sprintf("%u/%u/%u", $ri[80], $ri[81], $ri[82]),
+        "p2LadderRecord" => sprintf("%u/%u/%u", $ri[87], $ri[88], $ri[89]),
 
-			"GameDuration" => $ri[93],
+        "GameDuration" => $ri[93],
 
-		);
-	return $info;
+    );
+    return $info;
 
 }
 
-MYSQL_CONNECT($hostname,$username,$password) OR DIE("Can not create connection");
-@mysql_select_db($db_bnet) or die("Can not select database");
+$db = MYSQL_CONNECT(MYSQL_HOST,MYSQL_USER,MYSQL_PASSWORD) OR DIE("Can not create connection");
+@mysql_select_db(MYSQL_DB, $db) or die("Can not select database");
 
 foreach (glob( $reports_all."*") as $filename) { #пройти все файлы
-	$report_file=basename($filename); #real file name
-	$repinfo=LoadReport($filename, GetHWStatsPath() . $report_tpl); #parse each file of di
+    $report_file=basename($filename); #real file name
+    $repinfo=LoadReport($filename, GetHWStatsPath() . $report_tpl); #parse each file of di
 
-#echo $repinfo['ClientTag'];
+    #echo $repinfo['ClientTag'];
 
-	//exists report in mysql?
-	//$result = MYSQL_QUERY("SELECT filename FROM $table_reports WHERE filename='$report_file' LIMIT 1");
-	//$number = MYSQL_NUM_ROWS($result); #всего
-	//if ($number>0) $r_filename=mysql_result($result,0,"filename"); #check this file in db mysql
-	if (file_exists($filename) and $repinfo['ClientTag']=="SEXP" and $repinfo['p1Rating']>0 and $repinfo['p2Rating']>0 and $repinfo['GameDuration']>3) { #check true
-		
-	$result = MYSQL_QUERY("INSERT INTO `$table_reports` (
+    //exists report in mysql?
+    //$result = MYSQL_QUERY("SELECT filename FROM ".TABLE_REPORTS." WHERE filename='$report_file' LIMIT 1");
+    //$number = MYSQL_NUM_ROWS($result); #всего
+    //if ($number>0) $r_filename=mysql_result($result,0,"filename"); #check this file in db mysql
+    if (file_exists($filename) and $repinfo['ClientTag']=="SEXP" and $repinfo['p1Rating']>0 and $repinfo['p2Rating']>0 and $repinfo['GameDuration']>3) { #check true
+
+        $result = MYSQL_QUERY("INSERT INTO `".TABLE_REPORTS."` (
 			`filename`,
 			`gamename`,
 			`gameid`,
@@ -361,23 +362,23 @@ foreach (glob( $reports_all."*") as $filename) { #пройти все файлы
 			'".$repinfo['GameDuration']."'
 		);");
 
-			// если путь к репортам SEXP ladder существует, 
-			if (file_exists(GetHWStatsPath() . $reports_sexp_ladder)) {
-				rename ($filename, GetHWStatsPath() . $reports_sexp_ladder . $report_file); #...move to reports_sexp_ladder
-				echo "<br>".$report_file." was moved to ".GetHWStatsPath() . $reports_sexp_ladder; #info message
-							
-			} else echo GetHWStatsPath() . "$reports_sexp_ladder not exists!";
+        // если путь к репортам SEXP ladder существует,
+        if (file_exists(GetHWStatsPath() . $reports_sexp_ladder)) {
+            rename ($filename, GetHWStatsPath() . $reports_sexp_ladder . $report_file); #...move to reports_sexp_ladder
+            echo "<br>".$report_file." was moved to ".GetHWStatsPath() . $reports_sexp_ladder; #info message
 
-		
-	} 
-	// если же репорт существует и он из diablo
-	elseif (file_exists($filename)==true and ($repinfo['ClientTag']=="D2XP" or $repinfo['ClientTag']=="DRTL" or $repinfo['ClientTag']=="D2DV"))
-	{
+        } else echo GetHWStatsPath() . "$reports_sexp_ladder not exists!";
 
-		$result = MYSQL_QUERY("SELECT acct_username FROM $table_bnet WHERE acct_lastlogin_ip='".$repinfo['Host']."' ORDER BY acct_lastlogin_time DESC LIMIT 1");
-		if (MYSQL_NUM_ROWS($result)>0) $repinfo['p1Name']=mysql_result($result,0,"acct_username"); #insert account name on this ip (от динамической подмены ипа, напр. ADSL)
 
-		$result = MYSQL_QUERY("INSERT INTO `$table_reports` (
+    }
+    // если же репорт существует и он из diablo
+    elseif (file_exists($filename)==true and ($repinfo['ClientTag']=="D2XP" or $repinfo['ClientTag']=="DRTL" or $repinfo['ClientTag']=="D2DV"))
+    {
+
+        $result = MYSQL_QUERY("SELECT acct_username FROM ".TABLE_BNET." WHERE acct_lastlogin_ip='".$repinfo['Host']."' ORDER BY acct_lastlogin_time DESC LIMIT 1");
+        if (MYSQL_NUM_ROWS($result)>0) $repinfo['p1Name']=mysql_result($result,0,"acct_username"); #insert account name on this ip (от динамической подмены ипа, напр. ADSL)
+
+        $result = MYSQL_QUERY("INSERT INTO `".TABLE_REPORTS."` (
 			`filename`,
 			`gamename`,
 			`gameid`,
@@ -422,31 +423,25 @@ foreach (glob( $reports_all."*") as $filename) { #пройти все файлы
 			'".$repinfo['GameDuration']."'
 		);");
 
-		unlink($filename); #...remove diablo report
-		echo "<br>".$report_file." was deleted (Diablo)"; #info message
+        unlink($filename); #...remove diablo report
+        echo "<br>".$report_file." was deleted (Diablo)"; #info message
 
 
-	} else { #if other game...
-	
-			if (file_exists($filename)) {
-				rename ($filename, GetHWStatsPath() . $reports_others. $report_file); #...move to reports_sexp_ladder
-				echo "<br>".$report_file." was moved to ". GetHWStatsPath() . $reports_others; #info message
-			} else echo GetHWStatsPath() . "$reports_others not exists!";
-	}
+    } else { #if other game...
+
+        if (file_exists($filename)) {
+            rename ($filename, GetHWStatsPath() . $reports_others. $report_file); #...move to reports_sexp_ladder
+            echo "<br>".$report_file." was moved to ". GetHWStatsPath() . $reports_others; #info message
+        } else echo GetHWStatsPath() . "$reports_others not exists!";
+    }
 
 
 }
 
-MYSQL_CLOSE();
+MYSQL_CLOSE($db);
 
 
-#записать дату последнего обновления
-		$text=date("H:i");
-		$f = fopen(GetHWStatsPath() . "bnet/top/lastupdate.txt", "w");
-		   fwrite($f,$text); // Пишем в файл содержимое строки $text;
-		fclose($f);
-#/записать дату последнего обновления
-
-
+// записать дату последнего обновления
+WriteToFile(GetHWStatsPath() . "bnet/top/lastupdate.txt", date("H:i"));
 
 ?>

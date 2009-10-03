@@ -18,7 +18,7 @@ $gnum=mysql_escape_string($gnum); // filter
 
 $hwplayer = mysql_escape_string($hwplayer);
 
-$result = MYSQL_QUERY("SELECT uid,acct_userid,acct_username, acct_lastlogin_ip,  acct_lastlogin_owner, acct_lastlogin_clienttag FROM $table_bnet WHERE acct_username='$hwplayer' LIMIT 1"); #выбираем игрока
+$result = MYSQL_QUERY("SELECT uid,acct_userid,acct_username, acct_lastlogin_ip,  acct_lastlogin_owner, acct_lastlogin_clienttag FROM ".TABLE_BNET." WHERE acct_username='$hwplayer' LIMIT 1"); #выбираем игрока
 
 $number = MYSQL_NUM_ROWS($result); #всего
 
@@ -55,7 +55,7 @@ if ($number>0 and $hwplayer!="all" and $gnum=="")
 	$p_acct_lastlogin_owner=mysql_result($result,0,"acct_lastlogin_owner");
 	$p_acct_lastlogin_clienttag=mysql_result($result,0,"acct_lastlogin_clienttag");
 
-	$result2 = MYSQL_QUERY("SELECT uid, SEXP_0_last_game_result, SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_draws, SEXP_1_wins, SEXP_1_losses,  SEXP_1_draws, SEXP_1_high_rating, SEXP_1_high_rank FROM $table_record WHERE uid='$p_uid' LIMIT 1");
+	$result2 = MYSQL_QUERY("SELECT uid, SEXP_0_last_game_result, SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_draws, SEXP_1_wins, SEXP_1_losses,  SEXP_1_draws, SEXP_1_high_rating, SEXP_1_high_rank FROM ".TABLE_RECORD." WHERE uid='$p_uid' LIMIT 1");
 	$number2 = MYSQL_NUM_ROWS($result2); #всего
 
 	if ($number2 > 0)
@@ -129,14 +129,14 @@ if ($gnum=="" or $gnum=="all") { #если номер игры пустой, то показать все игры..
 	if ($gnum=="")  $gresult="WHERE (p1name='$hwplayer' or p2name='$hwplayer') and clienttag='SEXP'"; #если игрок me_bot и игры все показываются
 	else $gresult="WHERE clienttag='SEXP'";
 		
-		$result = MYSQL_QUERY("SELECT count(*) FROM $table_reports $gresult;", $mysql);
+		$result = MYSQL_QUERY("SELECT count(*) FROM ".TABLE_REPORTS." $gresult;", $mysql);
                 if (!$result)
                     ShowError("Please, create table `hwreports`");
                     
                 $games_count=mysql_result($result,0);#кол-во игр игрока
 
 		
-		$result = MYSQL_QUERY("SELECT uid, filename, map, gameid, gameended, p1name, p1race, p1rating, p1adj, p2name, p2race, p2rating, p2adj FROM $table_reports $gresult ORDER BY uid DESC LIMIT $lim_first,$games_on_page;"); #выбираем игры игрока
+		$result = MYSQL_QUERY("SELECT uid, filename, map, gameid, gameended, p1name, p1race, p1rating, p1adj, p2name, p2race, p2rating, p2adj FROM ".TABLE_REPORTS." $gresult ORDER BY uid DESC LIMIT $lim_first,$games_on_page;"); #выбираем игры игрока
 		$number = MYSQL_NUM_ROWS($result); #всего выбрать
 
 		#$games_count = mysql_result( mysql_query("SELECT FOUND_ROWS()"),0 );
@@ -201,7 +201,7 @@ if ($gnum=="" or $gnum=="all") { #если номер игры пустой, то показать все игры..
 	}
 
 } elseif ($gnum!="" and $gnum!="all") { #...если номер игры не пустой, то показать одну игру + её полную инфу (all - вообще все игры - показываются вместе с me_botom)
-	$result = MYSQL_QUERY("SELECT * FROM $table_reports WHERE uid ='$gnum'"); #выбираем игрока
+	$result = MYSQL_QUERY("SELECT * FROM ".TABLE_REPORTS." WHERE uid ='$gnum'"); #выбираем игрока
 	$number = MYSQL_NUM_ROWS($result); #всего
 	 
 	if ($number>0) { #если есть такая игра
