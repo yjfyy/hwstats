@@ -4,15 +4,14 @@ HarpyWar's Statistics for PvPGN (HWStats) v2.31
 
 0. Если аккаунты игроков хранятся в файлах/cdb, импортировать их в mysql с помощью perl скрипта script/storage/plain2sql.pl (cdb2sql.pl для cdb)
 1. В pvpgn конфиге bnetd.conf должно быть выставлено:
-	ladder_games = "melee,oneonone"
+	ladder_games = "melee, oneonone"
 	disc_is_loss = true (не обязательно, но желательно для самого сервера)
 	output_update_secs = 60
-	XML_status_output = false
+	XML_status_output = true
 
 2. Файлы, в которых нужно изменить пути:
 	config.inc.php
-	/script/parse_reports.php ($config)
-	/script/start/parse_reports (шелл для запуска скрипта)
+	/script/start/parse_reports* (шелл для запуска php скрипта)
 
 3. Далее необходимо в pvpgn бд mysql (bnet) вставить новую таблицу из файла hwreports.sql
 

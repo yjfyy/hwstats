@@ -1,6 +1,6 @@
 name="%[^"]" id=#%s
 clienttag=%s type="%[^"]" option="%[^"]"
-created="%[^"]" started="%[^"]" ended="%[^"]"
+%[A-Za-z0-9"=-+: ]
 mapfile="%[^"]" mapauth="%[^"]" mapsize=%ux%u tileset="%[^"]"
 joins=%u maxplayers=%u
 

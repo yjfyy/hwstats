@@ -124,7 +124,7 @@
           <td class="rankingrow" ><?php echo $r_joins ?></td>
           <td class="rankingrow" ><?php if ($show_player_ip) echo $r_host ?></td>
 		  <td class="rankingrow" ><?php echo $r_clienttag ?></td>
-          <td class="rankingrow" ><?php echo $r_gameduration ?> минут</td>
+          <td class="rankingrow" ><?php echo $r_gameduration ?> min</td>
           <td class="rankingrow" ><?php echo $r_mapsize ?></td>
           <td class="rankingrow" ><?php echo $r_tileset ?></td>
           <td class="rankingrow" ><?php echo $r_mapauth ?></td>
