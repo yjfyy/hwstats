@@ -1,4 +1,4 @@
-HarpyWar's Statistics for PvPGN (HWStats) v2.31
+HarpyWar's Statistics for PvPGN (HWStats)
 
 Project homepage: http://harpywar.com/?a=projects&b=6
 
@@ -9,19 +9,12 @@ Project homepage: http://harpywar.com/?a=projects&b=6
 		Output_update_secs = 60
 		XML_status_output = true
 
-2. The files which you need to change the pathes:
-		config.inc.php
-		/script/start/parse_reports* (shell to run the php script)
+2. Open install.php in your browser and follow the installation
 
-3. Next, you'll need insert hwreports.sql to your pvpgn "bnet" database
-
-3.1. Important step:
-	Compare fields from record_alter.sql with your PvPGN "record" database. There, all the required fields for various games of Battle.net which are not in the database by default, but uses by PvPGN.
-
-3.2 Create new Index in the table "record" for the field SEXP_1_rating (optional, but a select players request will faster)
-
-4. PHP Script /script/parse_reports.php should run with an interval (for example 5 minutes). This script parse info from Starcraft game reports to the database mysql.
+3. Shell script "hwstats\script\start\parse_reports" should run with an interval (for example 5 minutes). This script parse info from Starcraft game reports to the database mysql.
 More about cycling startup scripts, see http://harpywar.com/?a=articles&b=4&c=0&d=31
 
 -- 
 HWStats licensed under GPL (http://www.gnu.org/copyleft/gpl.html)
+
+If you want to get a new feature, or have a bugreport - please, post your message at http://code.google.com/p/hwstats/issues/list

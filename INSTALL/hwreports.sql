@@ -77,4 +77,4 @@ CREATE TABLE `hwreports` (
   KEY `gameended` (`gameended`),
   KEY `clienttag` (`clienttag`),
   KEY `p1name` (`p1name`,`p2name`)
-) ENGINE=MyISAM DEFAULT CHARSET=cp1251 AUTO_INCREMENT=482288 ;
+) ENGINE=MyISAM DEFAULT CHARSET=cp1251 AUTO_INCREMENT=482288;

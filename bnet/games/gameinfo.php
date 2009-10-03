@@ -122,7 +122,7 @@
           <td class="rankingrow" ><?php echo $r_gameoption ?></td>
           <td class="rankingrow"><?php echo $r_maxplayers ?></td>
           <td class="rankingrow" ><?php echo $r_joins ?></td>
-          <td class="rankingrow" ><?php if ($show_player_ip) echo $r_host ?></td>
+          <td class="rankingrow" ><?php if (SHOW_PLAYER_IP) echo $r_host ?></td>
 		  <td class="rankingrow" ><?php echo $r_clienttag ?></td>
           <td class="rankingrow" ><?php echo $r_gameduration ?> min</td>
           <td class="rankingrow" ><?php echo $r_mapsize ?></td>

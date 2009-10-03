@@ -1,7 +1,17 @@
-HarpyWar's Statistics for PvPGN (HWStats) v2.32
+HarpyWar's Statistics for PvPGN (HWStats) v2.34
 Project homepage: http://harpywar.com/?a=projects&b=6
 
 Version history:
+------v2.34---04.10.2009---
+- cleanup code
+- added installer: you can fill config through web form, automated installation for sql queries
+- fixed "bug", when some browsers redirected to browsernotsupported.html
+
+------v2.33---02.10.2009---
+- cleanup code
+- fixed bugs with report parse and write to database
+- beautiful server status output ;)
+
 ------v2.32---29.07.2009--- 
 - fixed errors on first start
 
