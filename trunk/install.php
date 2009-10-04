@@ -112,9 +112,9 @@ function Install2()
     $php_path = $_POST['php_path']; // full path to php binary file
     $script_path = dirname($_SERVER['SCRIPT_FILENAME']); // path to install.php without slash on the end
     
-    ReplaceRunScript("script/start/parse_reports.freebsd.sh", $script_path, $php_path);
-    ReplaceRunScript("script/start/parse_reports.linux.sh", $script_path, $php_path);
-    ReplaceRunScript("script/start/parse_reports.windows.bat", $script_path, $php_path);
+    ReplaceRunScript("INSTALL/parse_reports.freebsd.sh.tpl", "script/start/parse_reports.freebsd.sh", $script_path, $php_path);
+    ReplaceRunScript("INSTALL/parse_reports.linux.sh.tpl", "script/start/parse_reports.linux.sh", $script_path, $php_path);
+    ReplaceRunScript("INSTALL/parse_reports.windows.bat.tpl", "script/start/parse_reports.windows.bat", $script_path, $php_path);
 
     echo "<h3>Step 2: editing script to run (script/start/*)</h3>";
     echo sprintf("<ul>parse_reports.php path is: [%s]<br>PHP path is: [%s]<br><br>Ok!</ul>", $script_path, $php_path);
@@ -147,12 +147,12 @@ function Install3()
 }
 
 // replace pathes in scripts, which should run with cron
-function ReplaceRunScript($filename, $script_path, $php_path)
+function ReplaceRunScript($source, $destination, $script_path, $php_path)
 {
-    $content = file_get_contents($filename);
+    $content = file_get_contents($source);
     $newcontent = str_replace("full_path_to_hwstats", $script_path, $content);
     $newcontent = str_replace("full_path_to_php", $php_path, $newcontent);
-    if ( !WriteToFile($filename, $newcontent) )
+    if ( !WriteToFile($destination, $newcontent) )
     {
         DieMessage("Can not write to " . $filename);
     }
