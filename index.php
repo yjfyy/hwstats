@@ -1,5 +1,9 @@
 <?php
 #error_reporting(0);
+// TODO: скрипты поместить в папку install с расширением tpl, а при инсталляции создавать из них файлы, как из конфига
+// TODO: сделать статистику по расам - parse_reports при парсинге кажого нового реплея должен вычислять новую статистику по расам для каждого игрока. Поля вставить в record таблицу (hwstats_sexp_t_wins, hwstats_sexp_z_wins, hwstats_sexp_p_wins)
+// TODO: пофиксить html, чтобы в хроме не было серых бордюров в прозрачных таблицах
+// TODO: кеширование страниц в 5 минут
 
 $time1 = time(); // page generation time start
 $time_m1 = microtime(); 

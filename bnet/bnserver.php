@@ -3,10 +3,10 @@
 <?php
 
 require("bnet/online-offline.php");
-require ("bnet/status.php");
+require("bnet/status.php");
 
 
-echo GetServerStatusInfo ("inc/server.xml", EXTERNAL_ADDRESS, SHOW_CHANNELS);
+echo GetServerStatusInfo (STATUS_FILE, EXTERNAL_ADDRESS, SHOW_CHANNELS);
 ?>
 </div>
 <br><br>
