@@ -367,20 +367,3 @@ div.error {
     color: white;
     font-weight: normal;
 }
-
-
-/*  installation */
-
-.install-button {
-    width: 100%;
-    text-align: center;
-}
-
-.install-button input[type="submit"] {
-    color: #333333; font-weight: bold; width: 200px; height: 40px;
-}
-
-table.install-form {
-    font-size: 13px;
-    width: 100%;
-}
