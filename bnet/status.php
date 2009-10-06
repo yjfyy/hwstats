@@ -9,7 +9,7 @@
 function GetServerStatusInfo($status_file, $server_address = "localhost", $show_channels = false)
 {
     if (!$sxml = @simplexml_load_file($status_file))
-        return "Please, setup your bnet.conf with:<pre>XML_status_output = true</pre>";
+        return "Please, setup your bnet.conf with:<pre>XML_status_output = true</pre>(I can't find $status_file)";
 
     $users = array();
     $games = array();

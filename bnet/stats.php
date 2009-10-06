@@ -67,8 +67,9 @@ if ( $searchPlayer )
 // иначе выбрать всех игроков
 else
 {	
-	$result = MYSQL_QUERY("SELECT (select count(*) from ".TABLE_RECORD.") as count, uid, SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws FROM ".TABLE_RECORD." 
-	ORDER BY SEXP_1_rating DESC LIMIT $lim_first,$players_on_page;");
+	$result = MYSQL_QUERY("SELECT (SELECT COUNT(*) FROM `record`) AS COUNT, acct_username, acct_lastlogin_ip,acct_lastlogin_time, ".TABLE_RECORD.".uid AS uid, SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws
+FROM `record` LEFT OUTER JOIN ".TABLE_BNET." ON ".TABLE_RECORD.".uid = ".TABLE_BNET.".uid
+ORDER BY SEXP_1_rating DESC LIMIT $lim_first,$players_on_page;");
 
 	$players_count = mysql_result($result,0,"count");
 }
@@ -95,21 +96,10 @@ for ($i=0;$i<$number;$i++)
 	$p_SEXP_1_wins=mysql_result($result,$i,"SEXP_1_wins"); 
 	$p_SEXP_1_losses=mysql_result($result,$i,"SEXP_1_losses"); 
 	$p_SEXP_1_draws=mysql_result($result,$i,"SEXP_1_draws"); 
-
-	if ($searchPlayer)
-	{
-		$result2 = $result;
-		$j = $i;
-	}
-	else
-	{
-		$result2 = MYSQL_QUERY("SELECT acct_username, acct_lastlogin_ip,acct_lastlogin_time FROM ".TABLE_BNET." WHERE uid='$p_uid' LIMIT 1");
-		$j = 0;
-	}
 	
-	$p_acct_username=mysql_result($result2,$j,"acct_username");
-	$p_acct_lastlogin_time=mysql_result($result2,$j,"acct_lastlogin_time");
-	$p_acct_lastlogin_ip=mysql_result($result2,$j,"acct_lastlogin_ip");
+	$p_acct_username=mysql_result($result,$i,"acct_username");
+	$p_acct_lastlogin_time=mysql_result($result,$i,"acct_lastlogin_time");
+	$p_acct_lastlogin_ip=mysql_result($result,$i,"acct_lastlogin_ip");
 
 	$allgames=$p_SEXP_0_wins+$p_SEXP_0_losses+$p_SEXP_1_wins+$p_SEXP_1_losses;
 	$alldraws=$p_SEXP_0_draws+$p_SEXP_1_draws;
