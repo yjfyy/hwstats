@@ -4,6 +4,7 @@
     <title> Welcome to hwstats installation </title>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
     <link href="stats.files/main.css" type="text/css" rel=stylesheet>
+    <link href="stats.files/install.css" type="text/css" rel=stylesheet>
   </head>
   <body>
 <?php
@@ -29,9 +30,13 @@ function Install0()
     $vars = explode(";", $_SERVER['PATH']);
     $php_path = $vars[0] . "php";
 
+    $version_text = ( isNewVersion() )
+        ? "<div class='install-version-info'>Your version is outdated!<br>It is strongly recommend to download latest version from <br><a href='http://code.google.com/p/hwstats/downloads/list' target='_blank'>http://code.google.com/p/hwstats/</a></div><br><br>"
+        : "";
+
     $content = "<h2>Welcome to hwstats installation</h2>
-<small>Please, visit <a href='http://code.google.com/p/hwstats/' target='_blank'>http://code.google.com/p/hwstats/</a> to download latest version</small>
-<br><br><form action='' method='POST'>
+{$version_text}
+<form action='' method='POST'>
 
     <table class='install-form'>
 <tr><th width='300'></th><th width=600></th></tr>
@@ -201,13 +206,29 @@ function TableExists($db, $table_name)
 // die and show error with red style 
 function DieMessage($msg)
 {
-    echo "<h4 style='background: red; padding: 5px 10px 5px 10px; color: white'>$msg</h4>";
+    echo "<h4 class='install-error-message'>$msg</h4>";
     echo "<h3 style='color: red'>Installation failed!</h3>&#8592; <a href='install.php'>Please, try again</a><br><br>";
     die();
 }
 
 
+// check for new version from SVN.
+// return TRUE if versions are differend
+// and FALSE if versions are the same or remote server is not available
+function isNewVersion()
+{
+    $version_url = "http://hwstats.googlecode.com/svn/trunk/INSTALL/version"; // remote
+    $version_path = "INSTALL/version"; // local
 
+    // получить версию из SVN и локальную
+    if ( $remote_version = @file_get_contents($version_url) and $local_version = @file_get_contents($version_path) )
+    {
+        // если версии не совпадают, значит на сервере имеется архив с новой версией
+        if ($remote_version != $local_version)
+            return true;
+    }
+    return false;
+}
 
 ?>
   </body>

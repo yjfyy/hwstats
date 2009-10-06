@@ -1,0 +1,26 @@
+/*  installation */
+
+.install-button {
+    width: 100%;
+    text-align: center;
+}
+
+.install-button input[type="submit"] {
+    color: #333333; font-weight: bold; width: 200px; height: 40px;
+}
+.install-error-message {
+    background: red; padding: 5px 10px 5px 10px; color: white;
+}
+.install-version-info {
+    background: orange; padding: 10px;
+    color: black;
+    text-align: center;
+    font-size: large;
+}
+.install-version-info A {
+    color: gray;
+}
+table.install-form {
+    font-size: 13px;
+    width: 100%;
+}
