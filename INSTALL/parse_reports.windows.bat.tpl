@@ -1,4 +1,3 @@
-;start this script each 5-10 mines with cron
+;start this script each 5-10 minutes with cron
 
-cd "full_path_to_hwstats/script/"
 "full_path_to_php.exe" parse_reports.php

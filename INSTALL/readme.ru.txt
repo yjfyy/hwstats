@@ -6,13 +6,18 @@ HarpyWar's Statistics for PvPGN (HWStats)
 1. В pvpgn конфиге bnetd.conf должно быть выставлено:
 	ladder_games = "melee, oneonone"
 	disc_is_loss = true (не обязательно, но желательно для самого сервера)
+        hide_addr = false (если хотите, чтобы в инфе игры показывался IP и порт игрока, создавшего игру)
 	output_update_secs = 60
 	XML_status_output = true
 
-2. Откройте install.php через браузер и следуйте инструкции установки
+2. Чтобы скрипт install.php правильно установил статистику, выставите права write на директории:
+    /script/start (появятся 3 запускных скрипта "parse_reports" для unix, freebsd и windows)
+    /inc (появится файл config.inc.php)
+
+2.1. Откройте install.php через браузер и следуйте инструкции установки
 
 3. Скрипт "hwstats\script\start\parse_reports" надо запускать через определенный промежуток времени (например, 5 минут), чтобы заносить результаты игр Starcraft в бд mysql.
-Подробнее о циклическом запуске скриптов см. http://harpywar.com/?a=articles&b=4&c=0&d=31
+Подробнее о циклическом запуске скриптов см. http://harpywar.com/?a=articles&b=4&c=0&d=31. Если PvPGN сервер установлен на Windows, можно использовать встроенный в неё "Планировщик задач".
 
 --
 HWStats licensed under GPL (http://www.gnu.org/copyleft/gpl.html)

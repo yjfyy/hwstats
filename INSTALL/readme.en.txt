@@ -6,13 +6,18 @@ Project homepage: http://harpywar.com/?a=projects&b=6
 1. Setup PvPGN config bnetd.conf:
 		Ladder_games = "melee, oneonone"
 		disc_is_loss = true (not required, but it is desirable for players)
+                hide_addr = false (if you want to see game creator IP and Port on the gameinfo page)
 		Output_update_secs = 60
 		XML_status_output = true
 
-2. Open install.php in your browser and follow the installation
+2. To correct the install script to work, you should set permissions to write on directories:
+    /script/start (will create 3 launch scripts "parse_reports" for unix, freebsd and windows)
+    /inc (will create config.inc.php)
+
+2.1. Open install.php in your browser and follow the installation
 
 3. Shell script "hwstats\script\start\parse_reports" should run with an interval (for example 5 minutes). This script parse info from Starcraft game reports to the database mysql.
-More about cycling startup scripts, see http://harpywar.com/?a=articles&b=4&c=0&d=31
+More about cycling startup scripts, see http://harpywar.com/?a=articles&b=4&c=0&d=31. If you are windows user, you can try to use "Microsoft Task Sheduler".
 
 -- 
 HWStats licensed under GPL (http://www.gnu.org/copyleft/gpl.html)
