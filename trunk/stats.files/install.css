@@ -15,7 +15,7 @@
     background: orange; padding: 10px;
     color: black;
     text-align: center;
-    font-size: large;
+    font-size: larger;
 }
 .install-version-info A {
     color: gray;

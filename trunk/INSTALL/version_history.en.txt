@@ -2,6 +2,11 @@ HarpyWar's Statistics for PvPGN (HWStats) v2.34
 Project homepage: http://harpywar.com/?a=projects&b=6
 
 Version history:
+------v2.35---28.12.2009---
+- output a list of players to twice as fast
+- added check for new version on install
+- code fixes
+
 ------v2.34---04.10.2009---
 - cleanup code
 - added installer: you can fill config through web form, automated installation for sql queries

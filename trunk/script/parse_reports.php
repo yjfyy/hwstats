@@ -5,16 +5,10 @@
 
 // IMPORTANT: To run this script setup shell script for cron "script\start\parse_reports*"
 
+define('HWSTATSPATH', realpath(dirname(__FILE__).DIRECTORY_SEPARATOR.'..').DIRECTORY_SEPARATOR); // absolute path to hwstats root dir
 
-// path to hwstats directory
-function GetHWStatsPath()
-{
-    $path = "../";
-    return $path;
-}
-
-require (GetHWStatsPath() . "inc/config.inc.php");
-require (GetHWStatsPath() . "inc/functions.inc.php");
+require (HWSTATSPATH . "inc/config.inc.php");
+require (HWSTATSPATH . "inc/functions.inc.php");
 
 
 /**
@@ -203,7 +197,7 @@ $db = MYSQL_CONNECT(MYSQL_HOST,MYSQL_USER,MYSQL_PASSWORD) OR DIE("Can not create
 
 foreach (glob( $reports_all."*") as $filename) { #пройти все файлы
     $report_file=basename($filename); #real file name
-    $repinfo=LoadReport($filename, GetHWStatsPath() . $report_tpl); #parse each file of di
+    $repinfo=LoadReport($filename, HWSTATSPATH . $report_tpl); #parse each file of di
 
     #echo $repinfo['ClientTag'];
 
@@ -363,11 +357,11 @@ foreach (glob( $reports_all."*") as $filename) { #пройти все файлы
 		);");
 
         // если путь к репортам SEXP ladder существует,
-        if (file_exists(GetHWStatsPath() . $reports_sexp_ladder)) {
-            rename ($filename, GetHWStatsPath() . $reports_sexp_ladder . $report_file); #...move to reports_sexp_ladder
-            echo "<br>".$report_file." was moved to ".GetHWStatsPath() . $reports_sexp_ladder; #info message
+        if (file_exists(HWSTATSPATH . $reports_sexp_ladder)) {
+            rename ($filename, HWSTATSPATH . $reports_sexp_ladder . $report_file); #...move to reports_sexp_ladder
+            echo "<br>".$report_file." was moved to ".HWSTATSPATH . $reports_sexp_ladder; #info message
 
-        } else echo GetHWStatsPath() . "$reports_sexp_ladder not exists!";
+        } else echo HWSTATSPATH . "$reports_sexp_ladder not exists!";
 
 
     }
@@ -430,9 +424,9 @@ foreach (glob( $reports_all."*") as $filename) { #пройти все файлы
     } else { #if other game...
 
         if (file_exists($filename)) {
-            rename ($filename, GetHWStatsPath() . $reports_others. $report_file); #...move to reports_sexp_ladder
-            echo "<br>".$report_file." was moved to ". GetHWStatsPath() . $reports_others; #info message
-        } else echo GetHWStatsPath() . "$reports_others not exists!";
+            rename ($filename, HWSTATSPATH . $reports_others. $report_file); #...move to reports_sexp_ladder
+            echo "<br>".$report_file." was moved to ". HWSTATSPATH . $reports_others; #info message
+        } else echo HWSTATSPATH . "$reports_others not exists!";
     }
 
 
@@ -442,6 +436,6 @@ MYSQL_CLOSE($db);
 
 
 // записать дату последнего обновления
-WriteToFile(GetHWStatsPath() . "bnet/top/lastupdate.txt", date("H:i"));
+WriteToFile(HWSTATSPATH . "bnet/top/lastupdate.txt", date("H:i"));
 
 ?>
