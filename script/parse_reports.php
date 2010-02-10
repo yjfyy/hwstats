@@ -22,6 +22,8 @@ function GetGameOption($option)
 {
     switch ($option)
     {
+        case "melee":
+            $text = "melee"; break;
         case "one on one":
             $text = "one"; break;
         case "top vs bottom":
