@@ -8,7 +8,7 @@
   </head>
   <body>
 <?php
-/* 
+/*
  * hwstats installation script
  * (c) 2009, HarpyWar
  * http://harpywar.com
@@ -80,7 +80,7 @@ function Install1()
 
     require ("inc/functions.inc.php");
     $config = file_get_contents("INSTALL/config.inc.php.tpl");
-    
+
     // replace values from $_POST to template
     $newconfig = sprintf($config,
         $_POST['mysql_host'],
@@ -108,7 +108,7 @@ function Install1()
         DieMessage("Can not write to " . $cfg_file);
     }
     echo sprintf("<ul><pre>%s</pre>Ok!</ul>", var_export($_POST, true));
-    
+
 }
 
 // step 2 - edit scripts to run
@@ -116,13 +116,14 @@ function Install2()
 {
     $php_path = $_POST['php_path']; // full path to php binary file
     $script_path = dirname($_SERVER['SCRIPT_FILENAME']); // path to install.php without slash on the end
-    
-    ReplaceRunScript("INSTALL/parse_reports.freebsd.sh.tpl", "script/start/parse_reports.freebsd.sh", $php_path);
-    ReplaceRunScript("INSTALL/parse_reports.linux.sh.tpl", "script/start/parse_reports.linux.sh", $php_path);
-    ReplaceRunScript("INSTALL/parse_reports.windows.bat.tpl", "script/start/parse_reports.windows.bat", $php_path);
 
-    echo "<h3>Step 2: editing script to run (script/start/*)</h3>";
-    echo sprintf("<ul>parse_reports.php path is: [%s]<br>PHP path is: [%s]<br><br>Ok!</ul>", $script_path, $php_path);
+
+    echo "<h3>Step 2: editing scripts to run (script/start/*)</h3><ul>";
+
+    echo ReplaceRunScript("INSTALL/parse_reports.freebsd.sh.tpl", "script/start/parse_reports.freebsd.sh", $php_path);
+    echo ReplaceRunScript("INSTALL/parse_reports.linux.sh.tpl", "script/start/parse_reports.linux.sh", $php_path);
+    echo ReplaceRunScript("INSTALL/parse_reports.windows.bat.tpl", "script/start/parse_reports.windows.bat", $php_path);
+    echo sprintf("<br><br>parse_reports.php path is: [%s]<br>PHP path is: [%s]<br><br>Ok!</ul>", $script_path, $php_path);
 }
 
 // step 3 - sql installation
@@ -155,12 +156,14 @@ function Install3()
 function ReplaceRunScript($source, $destination, $php_path)
 {
     $content = file_get_contents($source);
-    #$newcontent = str_replace("full_path_to_hwstats", $script_path, $content);
-    $newcontent = str_replace("full_path_to_php", $php_path, $newcontent);
+    $newcontent = str_replace("full_path_to_php", $php_path, $content);
+    #$newcontent = str_replace("full_path_to_hwstats", $script_path, $newcontent);
+
     if ( !WriteToFile($destination, $newcontent) )
     {
-        DieMessage("Can not write to " . $filename);
+        return("<br>Can not write to [" . $destination . "]");
     }
+	return "<br>Writing to [" . $destination . "]";
 }
 
 // run each mysql query
@@ -172,7 +175,7 @@ function InstallSQL($db, $sqlfile)
     {
         if (!$query)
             continue;
-            
+
         if ( MYSQL_QUERY($query, $db) )
             $content .= "Line {$key}: success<br>";
         else
@@ -203,7 +206,7 @@ function TableExists($db, $table_name)
 }
 
 
-// die and show error with red style 
+// die and show error with red style
 function DieMessage($msg)
 {
     echo "<h4 class='install-error-message'>$msg</h4>";

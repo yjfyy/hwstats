@@ -17,8 +17,8 @@
                             <TD class=rankingHeader align=middle><A class=button href="">Draws</A></TD>
                             <TD class=rankingHeader><A class=button href="">All Games</A></TD>
                             <TD class=rankingHeader><A class=button href="">Last</A></TD>
-                           
-			    
+
+
 <?php
 if (SHOW_PLAYER_IP) echo '<TD class=rankingHeader align=middle><A class=button href="">IP adress</A></TD>';
 
@@ -33,30 +33,30 @@ if ( $searchPlayer )
 	if ( strlen($searchPlayer) >= $min_search_symbols )
 	{
 		$condition = 'LIKE "%' . strtolower(mysql_escape_string($searchPlayer)) . '%"';
-		
+
 	/*
 		// long search #1
-		$result = MYSQL_QUERY("SELECT uid, SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws FROM ".TABLE_RECORD." 
-		WHERE uid IN ( SELECT uid FROM ".TABLE_BNET." WHERE acct_username $condition ) 
+		$result = MYSQL_QUERY("SELECT uid, SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws FROM ".TABLE_RECORD."
+		WHERE uid IN ( SELECT uid FROM ".TABLE_BNET." WHERE acct_username $condition )
 		ORDER BY SEXP_1_rating DESC;");
 
 		// long search #2
-		$result = MYSQL_QUERY("SELECT ".TABLE_RECORD.".uid,SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws, 
+		$result = MYSQL_QUERY("SELECT ".TABLE_RECORD.".uid,SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws,
 		".TABLE_BNET.".acct_username, ".TABLE_BNET.".acct_lastlogin_ip, ".TABLE_BNET.".acct_lastlogin_time
 		FROM ".TABLE_RECORD."  LEFT JOIN ".TABLE_BNET."
 		ON ".TABLE_RECORD.".uid = ".TABLE_BNET.".uid
 		WHERE username $condition ORDER BY SEXP_1_rating DESC;");
-	*/	
-	
+	*/
+
 		// fast search
-		$result = MYSQL_QUERY("SELECT record.uid, record.SEXP_1_last_game_result, record.SEXP_1_rating, record.SEXP_1_rank, record.SEXP_0_wins, record.SEXP_0_losses, record.SEXP_0_disconnects, record.SEXP_1_wins, record.SEXP_1_losses, record.SEXP_0_draws,record.SEXP_1_draws,
+		$result = MYSQL_QUERY("SELECT ".TABLE_RECORD.".uid, ".TABLE_RECORD.".SEXP_1_last_game_result, ".TABLE_RECORD.".SEXP_1_rating, ".TABLE_RECORD.".SEXP_1_rank, ".TABLE_RECORD.".SEXP_0_wins, ".TABLE_RECORD.".SEXP_0_losses, ".TABLE_RECORD.".SEXP_0_disconnects, ".TABLE_RECORD.".SEXP_1_wins, ".TABLE_RECORD.".SEXP_1_losses, ".TABLE_RECORD.".SEXP_0_draws,".TABLE_RECORD.".SEXP_1_draws,
 		".TABLE_BNET.".acct_username, ".TABLE_BNET.".acct_lastlogin_ip, ".TABLE_BNET.".acct_lastlogin_time
 		FROM ".TABLE_BNET."
 		LEFT JOIN ".TABLE_RECORD."
 		ON ".TABLE_BNET.".uid = ".TABLE_RECORD.".uid
 		WHERE username $condition and ".TABLE_RECORD.".SEXP_1_rank > 0;");
 
-	
+
 		$players_count = mysql_num_rows($result);
 	}
 	else
@@ -66,9 +66,9 @@ if ( $searchPlayer )
 }
 // иначе выбрать всех игроков
 else
-{	
-	$result = MYSQL_QUERY("SELECT (SELECT COUNT(*) FROM `record`) AS COUNT, acct_username, acct_lastlogin_ip,acct_lastlogin_time, ".TABLE_RECORD.".uid AS uid, SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws
-FROM `record` LEFT OUTER JOIN ".TABLE_BNET." ON ".TABLE_RECORD.".uid = ".TABLE_BNET.".uid
+{
+	$result = MYSQL_QUERY("SELECT (SELECT COUNT(*) FROM `".TABLE_RECORD."`) AS COUNT, acct_username, acct_lastlogin_ip,acct_lastlogin_time, ".TABLE_RECORD.".uid AS uid, SEXP_1_last_game_result, SEXP_1_rating, SEXP_1_rank, SEXP_0_wins, SEXP_0_losses,  SEXP_0_disconnects, SEXP_1_wins, SEXP_1_losses, SEXP_0_draws,SEXP_1_draws
+FROM `".TABLE_RECORD."` LEFT OUTER JOIN ".TABLE_BNET." ON ".TABLE_RECORD.".uid = ".TABLE_BNET.".uid
 ORDER BY SEXP_1_rating DESC LIMIT $lim_first,$players_on_page;");
 
 	$players_count = mysql_result($result,0,"count");
@@ -82,21 +82,21 @@ $number = @MYSQL_NUM_ROWS($result); #всего выбрано
 for ($i=0;$i<$number;$i++)
 {
 	$p_uid=mysql_result($result,$i,"uid"); #player unicue id
-	
-	$p_SEXP_1_last_game_result=mysql_result($result,$i,"SEXP_1_last_game_result"); 
-	$p_SEXP_1_rating=mysql_result($result,$i,"SEXP_1_rating"); 
-	$p_SEXP_1_rank=mysql_result($result,$i,"SEXP_1_rank"); 
-	
+
+	$p_SEXP_1_last_game_result=mysql_result($result,$i,"SEXP_1_last_game_result");
+	$p_SEXP_1_rating=mysql_result($result,$i,"SEXP_1_rating");
+	$p_SEXP_1_rank=mysql_result($result,$i,"SEXP_1_rank");
+
 	#if (!$p_SEXP_1_rank) // display only SEXP players
 	#	continue;
 
-	$p_SEXP_0_wins=mysql_result($result,$i,"SEXP_0_wins"); 
-	$p_SEXP_0_losses=mysql_result($result,$i,"SEXP_0_losses"); 
-	$p_SEXP_0_draws=mysql_result($result,$i,"SEXP_0_draws"); 
-	$p_SEXP_1_wins=mysql_result($result,$i,"SEXP_1_wins"); 
-	$p_SEXP_1_losses=mysql_result($result,$i,"SEXP_1_losses"); 
-	$p_SEXP_1_draws=mysql_result($result,$i,"SEXP_1_draws"); 
-	
+	$p_SEXP_0_wins=mysql_result($result,$i,"SEXP_0_wins");
+	$p_SEXP_0_losses=mysql_result($result,$i,"SEXP_0_losses");
+	$p_SEXP_0_draws=mysql_result($result,$i,"SEXP_0_draws");
+	$p_SEXP_1_wins=mysql_result($result,$i,"SEXP_1_wins");
+	$p_SEXP_1_losses=mysql_result($result,$i,"SEXP_1_losses");
+	$p_SEXP_1_draws=mysql_result($result,$i,"SEXP_1_draws");
+
 	$p_acct_username=mysql_result($result,$i,"acct_username");
 	$p_acct_lastlogin_time=mysql_result($result,$i,"acct_lastlogin_time");
 	$p_acct_lastlogin_ip=mysql_result($result,$i,"acct_lastlogin_ip");
@@ -108,22 +108,23 @@ for ($i=0;$i<$number;$i++)
 	elseif ($p_SEXP_1_rank==2): $img1="GOS3";
 	elseif ($p_SEXP_1_rank==3): $img1="HAS2";
 	elseif ($p_SEXP_1_rank==4): $img1="CHO1";
-	else: $img1="NEWB";    
+	else: $img1="NEWB";
 	endif;
 
 	#$pp='<table cellpadding="2" cellspacing="0" width="98%" border="1" bordercolor="white" class="infotable"><tr class="row">';
 
-	 require ("bnet/games/stat.php"); #если рейтинг не тысячный и не нулевой
+	if ($p_acct_username != null)
+		require ("bnet/games/stat.php"); #если рейтинг не тысячный и не нулевой
 	#echo $pp.$txtstat;
 
 }
 
 
 	echo "<tr><td colspan=10><small>";
-	
+
 	if (!$searchPlayer)
 		echo pageNavigator($current_page, $players_on_page, $players_count, $trim_count, "index.php?game=SEXP&type=1&");
-	
+
 
 	echo "</small></td></tr>";
 
