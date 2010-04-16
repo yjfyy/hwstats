@@ -1,0 +1,11 @@
+- routing examples
+    warcraft3/stats/{pageId} - page with statistics
+    starcraft/profile/playerName - player profile page
+    starcraft/games/{pageId} - all games for starcraft game
+    starcraft/game/gameId - one ame info
+    server/status - server status page
+- add database models
+- multi language support
+- geoip support (ip as country flag image) - optional
+- styles support
+- sql tables with game history (games_warcraft3, games_dota, games_starcraft, games_diablo, games_diablo2)
