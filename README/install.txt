@@ -1,6 +1,8 @@
 ---------------------------------
  HWSTATS v3.0 INSTALLATION GUIDE 
 ---------------------------------
+[ABOUT]
+ HWStats is fast, secure and extensible PvPGN Statistics System.
 
 
 [REQUIREMENTS]

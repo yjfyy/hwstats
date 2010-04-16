@@ -345,7 +345,7 @@ class Database_Core {
 			{
 				if (($val = trim($val)) === '') continue;
 
-				// TODO: Temporary solution, this should be moved to database driver (AS is checked for twice)
+				// KOHANATODO: Temporary solution, this should be moved to database driver (AS is checked for twice)
 				if (stripos($val, ' AS ') !== FALSE)
 				{
 					$val = str_ireplace(' AS ', ' AS ', $val);
@@ -423,7 +423,7 @@ class Database_Core {
 		{
 			if (is_string($t))
 			{
-				// TODO: Temporary solution, this should be moved to database driver (AS is checked for twice)
+				// KOHANATODO: Temporary solution, this should be moved to database driver (AS is checked for twice)
 				if (stripos($t, ' AS ') !== FALSE)
 				{
 					$t = str_ireplace(' AS ', ' AS ', $t);
