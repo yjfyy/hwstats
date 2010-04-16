@@ -308,7 +308,7 @@ class Input_Core {
 		{
 			case 'htmlpurifier':
 				/**
-				 * @todo License should go here, http://htmlpurifier.org/
+				 * @kohanatodo License should go here, http://htmlpurifier.org/
 				 */
 				if ( ! class_exists('HTMLPurifier_Config', FALSE))
 				{

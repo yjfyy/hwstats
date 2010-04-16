@@ -4,6 +4,22 @@
  */
 
 
+
+
+$config['style'] = "silver";
+
+
+/**
+ * How many players display on page
+ */
+$config['players_on_page'] = 50;
+
+/**
+ * How many games display on page
+ */
+$config['games_on_page'] = 20;
+
+
 /**
  * Show country flag image near player name
  * 1. You should setup php GeoIP extension http://www.php.net/manual/en/geoip.setup.php

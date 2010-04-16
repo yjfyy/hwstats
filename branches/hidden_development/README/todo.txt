@@ -12,6 +12,16 @@
 - stats and games page navigation using kohana examples.php
 
 + multi language support
+- auto detect user agent language (use en_US if language is not found)
 - geoip support (ip as country flag image) - optional
 - visual styles support
 - sql tables with game history (games_warcraft3, games_dota, games_starcraft, games_diablo, games_diablo2)
+
+- sql script to migrate hwreports from 2.x to 3.x
+    i think to do this changes:
+	in the games player id's (it was names)
+	new table maps_starcraft with map names and map id in the gameinfo (remove map, mapauth, mapsize, tileset)
+	player result codes (0 - DRAW | 1 - WIN | 2 - LOSS | 3 - DISCONNECT | 4 - UNKNOWN)
+	player race codes (0 - Unknown | 1 - Terran | 2 - Protoss | 3 - Zerg)
+	probability type is float (it was string)
+	new "date" field (when game was added)

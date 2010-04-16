@@ -19,9 +19,13 @@ class Welcome_Controller extends Template_Controller {
 
 	public function index()
 	{
+	    $p = new Player_Model();
+	    $player = $p->GetPlayerInfo("harpywar");
+
 		// In Kohana, all views are loaded and treated as objects.
 		$this->template->content = new View('welcome_content');
 
+		$this->template->content->player = $player;
 		// You can assign anything variable to a view by using standard OOP
 		// methods. In my welcome view, the $title variable will be assigned
 		// the value I give it here.

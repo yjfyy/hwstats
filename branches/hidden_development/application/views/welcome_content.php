@@ -8,6 +8,11 @@
 	</p>
 </div>
 
+<?php
+#foreach ($player as $p)
+    echo $player->uid . "<br>";
+?>
+
 <ul>
 <?php foreach ($links as $title => $url): ?>
 	<li><?php echo ($title === 'License') ? html::file_anchor($url, html::specialchars($title)) : html::anchor($url, html::specialchars($title)) ?></li>

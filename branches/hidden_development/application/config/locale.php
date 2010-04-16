@@ -12,6 +12,8 @@
  * @see http://php.net/setlocale
  */
 $config['language'] = array('en_US', 'English');
+// TODO: parse $_SERVER["HTTP_ACCEPT_LANGUAGE"] to extract user agent language
+
 
 /**
  * Locale timezone. Defaults to use the server timezone.

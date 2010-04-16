@@ -30,26 +30,26 @@ $config['default'] = array
 	'connection'    => array
 	(
 		'type'     => 'mysql', // pvpgn database type (mysql, mysqli, mssql, pdosqlite, pgsql)
-		'user'     => 'hwstats_readonly', // pvpgn database username
-		'pass'     => 'dydYeZi2', // pvpgn database password
-		'host'     => 'harpywar.com', // pvpgn database host
+		'user'     => 'root', // pvpgn database username
+		'pass'     => '11532', // pvpgn database password
+		'host'     => 'localhost', // pvpgn database host
 		'port'     => FALSE,
 		'socket'   => FALSE,
 		'database' => 'hwstats' // pvpgn database name
 	),
 	'character_set' => 'utf8',
-	'table_prefix'  => '', // (optional) if you are using prefix for pvpgn tables
+	'table_prefix'  => 'pvpgn_', // (optional) if you are using prefix for pvpgn tables
 	'object'        => TRUE,
-	'cache'         => FALSE,
+	'cache'         => TRUE, // it caches the results of all queries, so when the next one is run, it uses that cache result instead of querying the database again
 	'escape'        => TRUE
 );
 
-// predefined tables
+// predefined table names
 $config['table_record'] = "record";
-$config['table_profile'] = "profile";
-$config['table_games_starcraft'] = "games_starcraft";
-$config['table_games_warcraft3'] = "games_warcraft3";
-$config['table_games_dota'] = "games_dota";
-$config['table_games_diablo'] = "games_diablo";
-$config['table_games_diablo2'] = "games_diablo2";
+$config['table_bnet'] = "bnet";
+$config['table_reports_starcraft'] = "reports_starcraft";
+$config['table_reports_warcraft3'] = "reports_warcraft3"; // not supported
+$config['table_reports_dota'] = "reports_dota"; // not supported
+$config['table_reports_diablo'] = "reports_diablo";
+$config['table_reports_diablo2'] = "reports_diablo2";
 
