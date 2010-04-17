@@ -87,7 +87,7 @@ class Report_Model extends Model
 	
 	switch(strtolower($client))
 	{
-	    case "starcraft":
+	    case "sexp":
 		// TODO: edit fields in compliance with new database fields
 		$fields[] = "uid";
 		$fields[] = "filename";

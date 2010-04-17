@@ -77,7 +77,7 @@ class Player_Model extends Model
 
 	switch(strtolower($client))
 	{
-	    case "starcraft":
+	    case "sexp":
 		$fields[] = "acct_username";
 		$fields[] = "acct_lastlogin_ip";
 		$fields[] = "acct_lastlogin_time";
