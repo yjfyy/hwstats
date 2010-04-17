@@ -61,6 +61,18 @@ class Player_Model extends Model
         return $p;
     }
 
+     /**
+     * Update player country code
+     *
+     * @param string $client game client
+     * @return bool
+     */
+    public function UpdateCountryCode($userName, $countryCode)
+    {
+	 $this->db->where('username', $userName)
+		  ->update( $this->t_bnet, array('cc2' => $countryCode) );
+    }
+
 
     /**
      * Return fields and orderby fields data for the current $game
@@ -73,7 +85,7 @@ class Player_Model extends Model
 	$orderby = array();
 	$fields = array();
 	$fields[] = $this->t_bnet . ".uid"; // unicue player id
-
+	$fields[] = "cc2"; // country code
 
 	switch($client)
 	{
