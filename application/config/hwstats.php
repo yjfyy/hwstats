@@ -8,7 +8,7 @@
 /**
  * Page display style (see application/views)
  */
-$config['style'] = "silver";
+$config['style'] = "ghost";
 
 
 /**

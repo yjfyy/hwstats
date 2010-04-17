@@ -6,8 +6,8 @@
 
 class Player_Model extends Model
 {
-    var $t_bnet;
-    var $t_record;
+    private $t_bnet;
+    private $t_record;
 
     public function __construct($id = NULL)
     {
@@ -72,10 +72,10 @@ class Player_Model extends Model
     {
 	$orderby = array();
 	$fields = array();
-	$fields[] = "uid"; // unicue player id
+	$fields[] = $this->t_bnet . ".uid"; // unicue player id
 
 
-	switch(strtolower($client))
+	switch($client)
 	{
 	    case "sexp":
 		$fields[] = "acct_username";

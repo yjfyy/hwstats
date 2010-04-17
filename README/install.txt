@@ -29,6 +29,9 @@
 ...
 
 
+- (OPTIONAL) Enable gzip output compression in application/config/config.php:
+    $config['output_compression'] = TRUE;
+
 - (OPTIONAL) Set page display language in application/config/locale.php:
     $config['language']
   If you want to translate statistics to your own language, you should:

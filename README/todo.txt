@@ -10,15 +10,11 @@ TODAY:
 
 
 - routing examples
-    w3xp/stats/{pageId} - page with statistics
-    sexp/profile/playerName - player profile page
-    sexp/games/{pageId} - all games for starcraft game
-    sexp/game/gameId - one ame info
+    warcraft3/playerlist/{pageId} - page with statistics
+    starcraft/profile/playerName - player profile page
+    starcraft/gamelist/playerId/{pageId} - all games for player
+    starcraft/gameinfo/gameId - one game info
     server/status - server status page
-- add db models
-    - player
-    - record
-    - games
 
 - stats and games page navigation using kohana examples.php
 

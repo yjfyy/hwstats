@@ -116,7 +116,6 @@ $config['extension_prefix'] = 'MY_';
  */
 $config['modules'] = array
 (
-	MODPATH.'geoip',      // GeoIP
 	// MODPATH.'auth',      // Authentication
 	// MODPATH.'kodoc',     // Self-generating documentation
 	// MODPATH.'gmaps',     // Google Maps integration

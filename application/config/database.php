@@ -30,8 +30,8 @@ $config['default'] = array
 	'connection'    => array
 	(
 		'type'     => 'mysql', // pvpgn database type (mysql, mysqli, mssql, pdosqlite, pgsql)
-		'user'     => 'root', // pvpgn database username
-		'pass'     => '11532', // pvpgn database password
+		'user'     => 'hwstats', // pvpgn database username
+		'pass'     => 'hwstats', // pvpgn database password
 		'host'     => 'localhost', // pvpgn database host
 		'port'     => FALSE,
 		'socket'   => FALSE,
