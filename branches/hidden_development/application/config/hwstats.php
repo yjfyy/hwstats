@@ -5,7 +5,9 @@
 
 
 
-
+/**
+ * Page display style (see application/views)
+ */
 $config['style'] = "silver";
 
 
@@ -22,12 +24,19 @@ $config['games_on_page'] = 20;
 
 /**
  * Show country flag image near player name
- * 1. You should setup php GeoIP extension http://www.php.net/manual/en/geoip.setup.php
- * 2. Extract http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
- *    to modules/geoip/GeoLiteCity.dat
- * 3. Uncomment string in application/config/config.php
- *       MODPATH.'geoip',
  */
-$config['geoip'] = false;
+$config['geoip'] = true;
 
 
+/**
+ * Show this games in statistics
+ * Comment game strings you won't show
+ */
+$config['games'] = array (
+    "sexp", // starcraft broodwar
+    "drtl", // diablo retail
+    "d2dv", // diablo 2 original
+    "d2xp", // diablo 2 lord of destruction
+    "w3xp", // warcraft 3 the frozen throne
+    //"dota", // not supported
+);

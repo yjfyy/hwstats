@@ -48,8 +48,7 @@ $config['default'] = array
 $config['table_record'] = "record";
 $config['table_bnet'] = "bnet";
 $config['table_reports_starcraft'] = "reports_starcraft";
-$config['table_reports_warcraft3'] = "reports_warcraft3"; // not supported
-$config['table_reports_dota'] = "reports_dota"; // not supported
 $config['table_reports_diablo'] = "reports_diablo";
 $config['table_reports_diablo2'] = "reports_diablo2";
-
+$config['table_reports_warcraft3'] = "reports_warcraft3";
+$config['table_reports_dota'] = "reports_dota";

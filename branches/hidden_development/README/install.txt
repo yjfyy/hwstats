@@ -35,12 +35,3 @@
     1. Copy directory application/i18n/en_US and rename it to your language code
     2. Translate phrases in php files
     3. Send translated files to harpywar@gmail.com, I'll add it to next hwstats package. Thanks.
-
-- (OPTIONAL) If you want show country flags near the player name, follow steps:
-    0. Set geoip variable to true in application/config/hwstats.php
-      $config['geoip'] = true;
-    1. You should have installed PHP GeoIP extension http://www.php.net/manual/en/geoip.setup.php
-    2. Extract http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
-      to modules/geoip/GeoLiteCity.dat
-    3. Uncomment string in application/config/config.php
-      MODPATH.'geoip',
