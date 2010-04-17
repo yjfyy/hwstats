@@ -1,12 +1,8 @@
 TODAY:
-- routing
-- views
++ routing
++ views
 - display player list
 - display player profile
-- coutry flags
-    * jquery + google api
-    * alter bnet table to create country_code field
-    * code: if (cc is null or player_ip == visitor_ip) update cc;
 
 
 - routing examples
