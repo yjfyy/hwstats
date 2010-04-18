@@ -32,6 +32,11 @@
 - (OPTIONAL) Enable gzip output compression in application/config/config.php:
     $config['output_compression'] = TRUE;
 
+- (OPTIONAL) Display country flags near player name in application/config/hwstats.php:
+    $config['country_flags'] = TRUE;
+   To enable country codes storage, execute this sql to your database README/bnet_alter.sql
+   
+
 - (OPTIONAL) Set page display language in application/config/locale.php:
     $config['language']
   If you want to translate statistics to your own language, you should:
