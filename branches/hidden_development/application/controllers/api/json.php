@@ -31,7 +31,9 @@ class Json_Controller extends Controller
 	list($playerName, $playerIp, $playerCC) = explode("&&", player::DecodeFlagData($playerInfo));
 
 	// grab country code from API service
-	$response = file_get_contents("http://easy4web.ru/api/geoip/get.php?&f=s&p=a&ip={$playerIp}");
+	if (!$response = @file_get_contents("http://easy4web.ru/api/geoip/get.php?&f=s&p=a&ip={$playerIp}"))
+	    return false;
+	    
 	$data = explode(";", $response);
 	list($var, $countryCode) = explode("=", $data[0]);
 
