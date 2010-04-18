@@ -4,10 +4,18 @@
     <head>
         <title> PvPGN Statistics System </title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-        <link rel="stylesheet" type="text/css" href="<?php echo url::base(); ?>files/css/flags.css">
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
 
+	<?php if (Kohana::config("hwstats.show_country_flag")): ?>
+        <link rel="stylesheet" type="text/css" href="<?php echo url::base(); ?>files/css/flags.css">
+	<script src="<?php echo url::base(); ?>files/js/flags.js" type="text/javascript"></script>
+	<?php endif ?>
+
+<script type="text/javascript">
+
+var relativePath = '<?php echo url::base(); ?>';
+
+</script>
     </head>
     <body>
 

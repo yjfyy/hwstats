@@ -25,7 +25,7 @@ $config['games_on_page'] = 20;
 /**
  * Show country flag image near player name
  */
-$config['geoip'] = true;
+$config['show_country_flag'] = true;
 
 
 /**
@@ -33,10 +33,9 @@ $config['geoip'] = true;
  * Comment game strings you won't show
  */
 $config['games'] = array (
-    "sexp", // starcraft broodwar
-    "drtl", // diablo retail
-    "d2dv", // diablo 2 original
-    "d2xp", // diablo 2 lord of destruction
-    "w3xp", // warcraft 3 the frozen throne
+    "starcraft",
+    "diablo",
+    "diablo2",
+    "warcraft3",
     //"dota", // not supported
 );

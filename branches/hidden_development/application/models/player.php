@@ -85,29 +85,38 @@ class Player_Model extends Model
 	$orderby = array();
 	$fields = array();
 	$fields[] = $this->t_bnet . ".uid"; // unicue player id
+
+	$fields[] = "acct_username";
+	$fields[] = "acct_lastlogin_ip";
+	$fields[] = "acct_lastlogin_time";
 	$fields[] = "cc2"; // country code
 
 	switch($client)
 	{
-	    case "sexp":
-		$fields[] = "acct_username";
-		$fields[] = "acct_lastlogin_ip";
-		$fields[] = "acct_lastlogin_time";
-		$fields[] = "SEXP_1_last_game_result";
-		$fields[] = "SEXP_1_rating";
-		$fields[] = "SEXP_1_rank";
-		$fields[] = "SEXP_0_wins";
-		$fields[] = "SEXP_0_losses";
-		$fields[] = "SEXP_0_disconnects";
-		$fields[] = "SEXP_1_wins";
-		$fields[] = "SEXP_1_losses";
-		$fields[] = "SEXP_0_draws";
-		$fields[] = "SEXP_1_draws";
+	    case "sexp_ladder":
+		$fields[] = "SEXP_1_rating AS rating";
+		$fields[] = "SEXP_1_rank AS rank";
+		$fields[] = "SEXP_1_wins AS wins";
+		$fields[] = "SEXP_1_losses AS losses";
+		$fields[] = "SEXP_1_draws AS draws";
+		$fields[] = "SEXP_1_disconnects AS disconnects";
+		$fields[] = "SEXP_1_last_game_result AS last_game_result";
 
 		$orderby['SEXP_1_rating'] = "DESC";
 
 		break;
 	    
+	    case "sexp_normal":
+		$fields[] = "SEXP_0_rank AS rank";
+		$fields[] = "SEXP_0_wins AS wins";
+		$fields[] = "SEXP_0_losses AS losses";
+		$fields[] = "SEXP_0_draws AS draws";
+		$fields[] = "SEXP_0_disconnects AS disconnects";
+		$fields[] = "SEXP_0_last_game_result AS last_game_result";
+
+		$orderby['SEXP_0_rank'] = "DESC";
+
+		break;
 	    default:
 		return false;
 	}

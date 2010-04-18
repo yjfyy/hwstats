@@ -12,7 +12,7 @@ class player_Core
     /**
      * Returns player flag class (image)
      */
-    public static function GetFlagClass($cc2)
+    public static function FlagClass($cc2)
     {
 	switch($cc2)
 	{
@@ -43,6 +43,32 @@ class player_Core
     {
 	return base64_decode($flag_data);
     }
+
+
+
+    /**
+     * Return country name from 2 symbol's code
+     */
+    public static function GetCountryByCode($cc2)
+    {
+	$country = "Unknown";
+
+	// TODO: switch country codes
+	return $country;
+    }
+
+
+
+
+    /**
+     * Return image name by $rating
+     */
+    public static function RankIcon($rating)
+    {
+	// TODO: calc rank name
+	return "D";
+    }
+
 
 
 
