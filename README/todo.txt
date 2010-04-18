@@ -1,12 +1,6 @@
-TODAY:
-+ routing
-+ views
-- display player list
-- display player profile
-
 
 - routing examples
-    warcraft3/playerlist/{pageId} - page with statistics
+    warcraft3/ladder/{pageId} - page with statistics
     starcraft/profile/playerName - player profile page
     starcraft/gamelist/playerId/{pageId} - all games for player
     starcraft/gameinfo/gameId - one game info
@@ -16,9 +10,9 @@ TODAY:
 
 + multi language support
 - auto detect user agent language (use en_US if language is not found)
-- geoip support (ip as country flag image)
++ geoip support (ip as country flag image)
 
-- visual styles support
++ visual styles support
 - sql tables with game history (games_warcraft3, games_dota, games_starcraft, games_diablo, games_diablo2)
 
 - sql script to migrate hwreports from 2.x to 3.x
@@ -29,3 +23,9 @@ TODAY:
 	player race codes (0 - Unknown | 1 - Terran | 2 - Protoss | 3 - Zerg)
 	probability type is float (it was string)
 	new "date" field (when game was added)
+
+
+------------
+- D2SExtractor - program export d2s and d2i characters to xml
+    It should listen tcp portm recieve commands and output xml back to client
+    Use cash (save xml chars to directory) and check characters checksum before new parse

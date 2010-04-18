@@ -9,7 +9,7 @@
 abstract class Main_Controller extends Controller
 {
 // Template view name
-    public $template = 'welcome_content';
+    public $template = 'template';
 
     // Default to do auto-rendering
     public $auto_render = TRUE;

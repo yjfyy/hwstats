@@ -4,6 +4,16 @@
 [ABOUT]
  HWStats is fast, secure and extensible PvPGN Statistics System.
 
+[FEATURES]
+* Starcraft: player list, player profile, games history
+* Diablo: player list, player profile, games history
+* Diablo 2: player list, player profile, games history
+* Warcraft 3: player list, player profile
+* Server status page (who is online)
+* Multilanguage support
+* Styles support
+* Extensible (based on Kohana)
+
 
 [REQUIREMENTS]
 

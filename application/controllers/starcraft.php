@@ -17,23 +17,32 @@ class Starcraft_Controller extends Main_Controller
 
     public function index()
     {
-        $this->template->content = "Welcome";
+        url::redirect("starcraft/ladder");
     }
 
 
     /**
-     * Display player list
+     * Display ladder stats
      * @param int $page
      */
-    public function playerlist($page = 1)
+    public function ladder($page = 1)
     {
         $p = new Player_Model();
-
-        $this->template->content = new View('playerlist');
+        $this->template->content = new View('starcraft/ladder');
         
-        $this->template->content->players = $p->GetPlayerList("sexp");
+        $this->template->content->players = $p->GetPlayerList("sexp_ladder");
     }
 
+    /**
+     * Display normal stats
+     * @param int $page
+     */
+    public function normal($page = 1)
+    {
+        $p = new Player_Model();
+        $this->template->content = new View('starcraft/normal');
 
+        $this->template->content->players = $p->GetPlayerList("sexp_normal");
+    }
 
 } 
