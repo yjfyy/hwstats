@@ -1,0 +1,54 @@
+---------------------------------
+ HWSTATS v3.0 INSTALLATION GUIDE 
+---------------------------------
+[ABOUT]
+ HWStats is fast, secure and extensible PvPGN Statistics System.
+
+[FEATURES]
+* Starcraft: player list, player profile, games history
+* Diablo: player list, player profile, games history
+* Diablo 2: player list, player profile, games history
+* Warcraft 3: player list, player profile
+* Server status page (who is online)
+* Multilanguage support
+* Styles support
+* Extensible (based on Kohana)
+
+
+[REQUIREMENTS]
+
+    * Apache or other web server with mod_rewrite support
+    * PHP 5+
+    * Cron or other task sheduler (optional)
+
+
+[INSTALLATION]
+
+- Ensure your web server configured with mod_rewrite
+
+- Pass this step, if you are using root domain for hwstats (like http://stats.yoursite.com)
+  If you are not using root domain (for example http://yoursite.com/pvpgnstats), you need
+  to modify .htaccess:
+    RewriteBase /pvpgnstats
+  and application/config/config.php:
+    $config['site_domain'] = '/pvpgnstats';
+  where "pvpgnstats" is directory where hwstats files placed
+
+
+...
+
+
+- (OPTIONAL) Enable gzip output compression in application/config/config.php:
+    $config['output_compression'] = TRUE;
+
+- (OPTIONAL) Display country flags near player name in application/config/hwstats.php:
+    $config['country_flags'] = TRUE;
+   To enable country codes storage, execute this sql to your database README/bnet_alter.sql
+   
+
+- (OPTIONAL) Set page display language in application/config/locale.php:
+    $config['language']
+  If you want to translate statistics to your own language, you should:
+    1. Copy directory application/i18n/en_US and rename it to your language code
+    2. Translate phrases in php files
+    3. Send translated files to harpywar@gmail.com, I'll add it to next hwstats package. Thanks.
