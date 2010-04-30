@@ -4,7 +4,7 @@
  * Helper
  *
  * @author HarpyWar
- * @copyright (c) 2009, HarpyWar
+ * @copyright (c) 2010, HarpyWar
  */
 class player_Core
 {
@@ -27,6 +27,21 @@ class player_Core
 	}
 	return $flag;
     }
+
+
+    /**
+     * Return html image flag icon
+     */
+    public static function FlagIcon($acct_username, $acct_lastlogin_ip, $cc2)
+    {
+	$class = self::FlagClass($cc2);
+	$title = self::GetCountryByCode($cc2);
+	$data = self::EncodeFlagData($acct_username, $acct_lastlogin_ip, $cc2);
+	$output = '<div id="flag-container"><div onclick="LoadFlag(this);" class="'.$class.'" style="float:left;" title="'.$title.'" alt="'.$data.'"></div>';
+	
+	return $output;
+    }
+
 
     /**
      * Encode flag data

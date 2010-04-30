@@ -36,23 +36,69 @@ div {
 .width100 {
     width: 100%;
 }
+.width35 {
+    width: 35px;
+}
+.width40, .width40c {
+    width: 40px;
+}
 .width45 {
     width: 45px;
+}
+.width50, .width50c {
+    width: 50px;
+}
+.width55 {
+    width: 55px;
+}
+.width60 {
+    width: 60px;
 }
 .width90 {
     width: 90px;
 }
+.width120 {
+    width: 120px;
+}
+.width130 {
+    width: 130px;
+}
+.width140 {
+    width: 140px;
+}
+.width150 {
+    width: 150px;
+}
+.width155 {
+    width: 155px;
+}
 .width160 {
     width: 160px;
+}
+.width170 {
+    width: 170px;
+}
+.width200 {
+    width: 200px;
 }
 .width210 {
     width: 210px;
 }
+.width215 {
+    width: 215px;
+}
+
+
+
+
 .width100px {
     width: 100px;
 }
 .width80c, .width80 {
     width: 80px;
+}
+.width110c {
+    width: 110px;
 }
 .width80r {
     text-align: right;
@@ -65,30 +111,32 @@ div {
     padding: 0px 0px 0px 10px;
     width: 70px;
 }
-.width215 {
-    width: 215px;
-}
-.width155 {
-    width: 155px;
-}
-.width150 {
-    width: 150px;
-}
-.width120 {
-    width: 120px;
-}
 
 .padding15 {
     float: left;
     padding-bottom: 20px;
 }
 
+
+.pdl5 {
+    padding-left: 5px !important;
+}
 .bdt {
     border-top: 1px solid #DDDCDC;
 }
 
 .t-im {
     float: left;
+}
+
+.t-corp2 {
+    border-bottom: 1px solid #E7E7E7;
+}
+.t-corp2, .t-corp4 {
+    float: left;
+    height: 15px;
+    padding: 7px 0px 5px;
+    width: 100%;
 }
 .t-corp3 {
     padding: 6px 0px;
@@ -98,6 +146,8 @@ div {
     float: left;
     width: 100%;
 }
+
+
 .t-hover-1 {
     background: #F4F4FB;
 }
@@ -123,6 +173,12 @@ div {
     color: #313030;
     float: left;
     font: normal normal normal 0.8em/normal Tahoma;
+}
+.field7, .field8 {
+    color: #313030;
+    float: left;
+    font: normal normal normal 0.7em/normal Tahoma;
+    text-align: center;
 }
 
 
@@ -205,3 +261,30 @@ div {
 	opacity:1.0;filter:alpha(opacity=100);-moz-opacity:1.0
     }
     .tg-sc a img {border:none;}
+
+
+
+
+/* match details  */
+.details-anchor {
+    display: none;
+    float: left;
+    position: relative;
+    visibility: hidden;
+}
+
+/* rank icons */
+.a2 {
+    background: #DDD url(http://www.iccup.com/templates/images/rank/a2.jpg) no-repeat;
+}
+/* rank icons */
+.a3 {
+    background: #DDD url(http://www.iccup.com/templates/images/rank/a2.jpg) no-repeat;
+}
+
+.a3, .a2, .a1, .b3, .b2, .b1, .c3, .c2, .c1, .d3, .d2, .d1, .cpu, .ooooo {
+    float: left;
+    height: 14px;
+    margin-right: 5px;
+    width: 28px;
+}

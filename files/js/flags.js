@@ -7,7 +7,7 @@ function LoadFlag(el)
     $.ajax({
 	type: 'GET',
 	dataType: 'json',
-	url: relativePath + 'remote/api/flag/' + pInfo,
+	url: url_base() + 'remote/api/flag/' + pInfo,
 	success: function (data) {
 	    var countrycode = data.cc2.toLowerCase();
 	    if (countrycode == "xx") // bad cc2
