@@ -1289,3 +1289,53 @@ n line 841
 2010-04-30 00:41:05 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats_hidden/system/core/Kohana.php on line 841
 2010-04-30 00:43:49 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats_hidden/system/core/Kohana.php on line 841
 2010-04-30 00:43:49 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats_hidden/system/core/Kohana.php on line 841
+2010-04-30 14:44:53 +04:00 --- error: Uncaught Kohana_Exception: The requested view, iccup\kohana/template, could not be found in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 1162
+2010-04-30 14:45:59 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 14:45:59 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 14:46:06 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 14:46:06 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 17:45:00 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, starcraft/matchlish/harpywar, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 17:45:06 +04:00 --- error: Missing i18n entry hwstats.test for language en_US
+2010-04-30 17:45:21 +04:00 --- error: Uncaught PHP Error: Missing argument 1 for Starcraft_Controller::matchlist() in file H:/Projects/PHP/hwstats/application/controllers/starcraft.php on line 80
+2010-04-30 17:57:54 +04:00 --- error: Missing i18n entry hwstats.test for language en_US
+2010-04-30 18:13:13 +04:00 --- error: Missing i18n entry hwstats.test for language en_US
+2010-04-30 18:13:39 +04:00 --- error: Missing i18n entry hwstats.test for language en_US
+2010-04-30 18:14:31 +04:00 --- error: Missing i18n entry hwstats.test for language en_US
+2010-04-30 18:14:32 +04:00 --- error: Missing i18n entry hwstats.test for language en_US
+2010-04-30 18:14:32 +04:00 --- error: Missing i18n entry hwstats.test for language en_US
+2010-04-30 18:14:49 +04:00 --- error: Missing i18n entry hwstats.test for language en_US
+2010-04-30 20:24:08 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 20:24:08 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 20:28:02 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 20:28:02 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 20:42:42 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 20:42:43 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:02:20 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:02:20 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:04:12 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:04:12 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:04:30 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:04:30 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:08:00 +04:00 --- error: Uncaught PHP Error: Invalid argument supplied for foreach() in file H:/Projects/PHP/hwstats/application/helpers/hw.php on line 19
+2010-04-30 21:09:31 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:09:31 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:12:25 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:12:25 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:13:46 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:13:46 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:13:59 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:13:59 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:15:50 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:15:50 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:18:11 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:18:11 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:18:17 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:18:17 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:18:18 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:18:18 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:18:18 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:18:19 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:18:29 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:18:29 +04:00 --- error: Uncaught Kohana_404_Exception: The page you requested, files/images/client/diablo2.gif, could not be found. in file H:/Projects/PHP/hwstats/system/core/Kohana.php on line 841
+2010-04-30 21:21:54 +04:00 --- error: Missing i18n entry hwstats.test for language en_US
+2010-04-30 21:26:19 +04:00 --- error: Missing i18n entry hwstats.test for language en_US

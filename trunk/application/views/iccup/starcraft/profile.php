@@ -36,7 +36,7 @@
     </div>
     <div class="t-corp3 t-hover-1">
 	<div class="field1 width160">Rank</div>
-	<div class="field2"><div class="<?php echo player::RankIcon($player->SEXP_1_rating); ?>" title="13896"></div></div>
+	<div class="field2"><div class="<?php echo player::RankIcon($player->SEXP_1_rating); ?>" title="<?php echo $player->SEXP_1_rating; ?>"></div></div>
     </div>
     <div class="t-corp3 t-hover-2">
 	<div class="field1 width160">Points</div>
@@ -48,7 +48,7 @@
     </div>
     <div class="t-corp3 t-hover-2">
 	<div class="field1 width160">Match List</div>
-	<div class="field2">322 | <a href='matchlist/1093992/1x1.html'>Match List</a></div>
+	<div class="field2">322 | <a href='<?php echo hwstats::url_base("matchlist", $player->username); ?>'>Match List</a></div>
     </div>
     <div class="t-corp3 t-hover-1">
 	<div class="field1 width160">Win Ratio</div>
@@ -57,8 +57,8 @@
 </div>
 <div class="t-im width100 bdt">
     <div class="t-corp3 t-hover-1">
-	<div class="field1 width160">Best location:</div>
-	<div class="field2">#<?php echo $player->SEXP_1_high_rank; ?></div>
+	<div class="field1 width160">Best rank:</div>
+	<div class="field2"><div class="<?php echo player::RankIcon($player->SEXP_1_high_rating); ?>" title="<?php echo $player->SEXP_1_high_rating; ?>"></div></div>
     </div>
     <div class="t-corp3 t-hover-2">
 	<div class="field1 width160">Last game result:</div>

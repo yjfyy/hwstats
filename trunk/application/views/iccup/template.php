@@ -13,8 +13,7 @@
 	<?php endif ?>
 
 <script type="text/javascript">
-
-var relativePath = '<?php echo url::base(); ?>';
+function url_base() { return "<?php echo url::base();?>"; }
 
 </script>
     </head>
@@ -26,7 +25,7 @@ var relativePath = '<?php echo url::base(); ?>';
     </div>
     <br><br>
     <?php
-    
+
 	echo $content;
     ?>
 

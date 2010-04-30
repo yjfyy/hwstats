@@ -31,8 +31,8 @@ foreach ($players as $p): ?>
     <div class="field2 width100px"> <div class='off'></div> <div class="b2" title="7123"></div>&nbsp;</div>
     <div class="field2 width210">
 	<div id="flag-container">
-	    <div onclick="LoadFlag(this);" class="<?php echo player::FlagClass($p->cc2); ?>" style="float:left;" title="<?php echo player::GetCountryByCode($p->cc2); ?>" alt="<?php echo player::EncodeFlagData($p->acct_username, $p->acct_lastlogin_ip, $p->cc2); ?>">
-	    </div>&nbsp;<a href="profile/<?php echo $p->username; ?>"><?php echo $p->acct_username; ?></a>
+	    <?php echo player::FlagIcon($p->acct_username, $p->acct_lastlogin_ip, $p->cc2); ?>
+	    </div>&nbsp;<a href="<?php echo hwstats::url_base("profile", $p->username); ?>"><?php echo $p->acct_username; ?></a>
 	</div>
     </div>
     <div class="field2 width70p10"><?php echo $p->rating; ?></div>

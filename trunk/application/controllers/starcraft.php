@@ -27,7 +27,7 @@ class Starcraft_Controller extends Main_Controller
      */
     public function ladder($page = 1)
     {
-	$this->template->title = "StarCraft Ladder";
+	$this->template->title = 'StarCraft Ladder';
 
         $p = new Player_Model();
         $this->template->content = new View('starcraft/ladder');
@@ -41,7 +41,7 @@ class Starcraft_Controller extends Main_Controller
      */
     public function normal($page = 1)
     {
-	$this->template->title = "StarCraft Normal";
+	$this->template->title = 'StarCraft Normal';
 
         $p = new Player_Model();
         $this->template->content = new View('starcraft/normal');
@@ -52,26 +52,55 @@ class Starcraft_Controller extends Main_Controller
     /**
      * Display profile page
      */
-    public function profile($name=false)
+    public function profile($username)
     {
-// TODO: check for non exists player name
-//	if (!$name)
-//	     throw new Kohana_404_Exception('divide by zero');
+	// TODO: check for non exists player name
+	//	if (!$name)
+	//	     throw new Kohana_404_Exception('divide by zero');
 
         $p = new Player_Model();
-	$player = $p->GetPlayerInfo($name);
+	$player = $p->GetPlayerInfo($username);
 
 	$this->template->title = Kohana::lang("content.gaming_profile", $player->acct_username);
 
         $this->template->content = new View('starcraft/profile');
         $this->template->content->player = $player;
 
-// TODO: map statistics
+	// TODO: map statistics
 
-// TODO: race statistics
+	// TODO: race statistics
 
 
     }
 
+    /**
+     * Display matches list for player
+     * @param int $page
+     */
+    public function matchlist($username, $page = 1)
+    {
+	// TODO: check for non exists player name
 
+	$p = new Player_Model();
+	$player = $p->GetPlayerInfo($username);
+	$this->template->title = 'Match List / ' . $player->acct_username;
+
+
+        $this->template->content = new View('starcraft/matchlist');
+        $this->template->content->player = $player;
+    }
+
+    /**
+     * Display match details
+     * @param int $matchId
+     */
+    public function matchinfo($matchId)
+    {
+	$this->template->title = 'Game Details / ' . $matchId;
+
+        //$r = new Report_Model();
+        $this->template->content = new View('starcraft/matchinfo');
+
+        //$this->template->content->matches = $r->GetReportDetails($matchId);
+    }
 }
