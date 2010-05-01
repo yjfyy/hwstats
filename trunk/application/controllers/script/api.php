@@ -31,7 +31,8 @@ class Api_Controller extends Controller
 	list($playerName, $playerIp, $playerCC) = explode("&&", player::DecodeFlagData($playerInfo));
 
 	// grab country code from API service
-	// FIXME: mb use iptocountry.csv?
+	// FIXME: mb use other API ?
+        //        for example grab cc2 from ripn.net whois (http://www.phpclasses.org/package/3342-PHP-Determine-the-country-of-an-IP-address-using-Whois.html)
 	if (!$response = @file_get_contents("http://easy4web.ru/api/geoip/get.php?&f=s&p=a&ip={$playerIp}"))
 	    return false;
 
