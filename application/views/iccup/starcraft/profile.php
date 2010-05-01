@@ -9,9 +9,9 @@
 	
 	    <div class="tg-sc">
 		<?php if ($gametag != Router::$controller) { ?>
-		<a href="<?php echo url::base(); ?>warcraft3/profile/<?php echo $player->username; ?>">
+		<a href="<?php echo sprintf("%s%s/profile/%s", url::base(), $gametag, $player->username); ?>">
 		<?php } ?>
-		    <img src="<?php echo url::base(); ?>files/images/client/<?php echo $gametag; ?>.gif" border="0" alt="<?php echo $gametag; ?>"/>
+		    <img src="<?php echo url::base(); ?>files/images/client/<?php echo $gametag; ?>.gif" border="0" title="<?php echo $gametag; ?>"/>
 		<?php if ($gametag != Router::$controller) { ?>
 		</a>
 		<?php } ?>

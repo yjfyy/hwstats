@@ -1,18 +1,11 @@
+- change flags.png and flags.css like iccup
 
-- routing examples
-    warcraft3/ladder/{pageId} - page with statistics
-    starcraft/profile/playerName - player profile page
-    starcraft/gamelist/playerId/{pageId} - all games for player
-    starcraft/gameinfo/gameId - one game info
-    server/status - server status page
+- server/status - server status page
 
-- stats and games page navigation using kohana examples.php
+- paging players and games using kohana examples.php
 
-+ multi language support
 - auto detect user agent language (use en_US if language is not found)
-+ geoip support (ip as country flag image)
 
-+ visual styles support
 - sql tables with game history (games_warcraft3, games_dota, games_starcraft, games_diablo, games_diablo2)
 
 - sql script to migrate hwreports from 2.x to 3.x

@@ -274,17 +274,33 @@ div {
 }
 
 /* rank icons */
-.a2 {
-    background: #DDD url(http://www.iccup.com/templates/images/rank/a2.jpg) no-repeat;
-}
-/* rank icons */
-.a3 {
-    background: #DDD url(http://www.iccup.com/templates/images/rank/a2.jpg) no-repeat;
-}
+.d1 { background: #DDD url(../images/starcraft/rank/d1.jpg) no-repeat; }
+.d2 { background: #DDD url(../images/starcraft/rank/d2.jpg) no-repeat; }
+.d3 { background: #DDD url(../images/starcraft/rank/d3.jpg) no-repeat; }
+.c1 { background: #DDD url(../images/starcraft/rank/c1.jpg) no-repeat; }
+.c2 { background: #DDD url(../images/starcraft/rank/c2.jpg) no-repeat; }
+.c3 { background: #DDD url(../images/starcraft/rank/c3.jpg) no-repeat; }
+.b1 { background: #DDD url(../images/starcraft/rank/b1.jpg) no-repeat; }
+.b2 { background: #DDD url(../images/starcraft/rank/b2.jpg) no-repeat; }
+.b3 { background: #DDD url(../images/starcraft/rank/b3.jpg) no-repeat; }
+.a1 { background: #DDD url(../images/starcraft/rank/a1.jpg) no-repeat; }
+.a2 { background: #DDD url(../images/starcraft/rank/a2.jpg) no-repeat; }
+.a3 { background: #DDD url(../images/starcraft/rank/a3.jpg) no-repeat; }
 
 .a3, .a2, .a1, .b3, .b2, .b1, .c3, .c2, .c1, .d3, .d2, .d1, .cpu, .ooooo {
     float: left;
     height: 14px;
     margin-right: 5px;
     width: 28px;
+}
+
+/* status icons */
+.off { background: url(../images/off.gif) no-repeat 0% 100%; }
+.on { background: url(../images/on.gif) no-repeat 0% 100%; }
+
+.off, .on {
+    float: left;
+    height: 11px;
+    padding: 2px 14px 0px 0px !important;
+    width: 27px;
 }

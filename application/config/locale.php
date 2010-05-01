@@ -15,6 +15,7 @@ $config['language'] = array('en_US', 'English');
 // TODO: autodetect language
 //       parse $_SERVER["HTTP_ACCEPT_LANGUAGE"] to extract user agent language
 //       give user to choose language and save choise in the cookie
+// TODO: put current language into the cookie
 
 /**
  * Locale timezone. Defaults to use the server timezone.
