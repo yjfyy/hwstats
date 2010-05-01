@@ -175,7 +175,7 @@ class enum_Core
 
     // countries and it codes
     private static $country = array(
-        'xx' => 'Unknown',
+        'xx' => 'Local Network',
         'ch' => 'Switzerland',
         'af' => 'Afghanistan',
         'za' => 'South Africa',
