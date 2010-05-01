@@ -96,7 +96,9 @@ class Starcraft_Controller extends Main_Controller
      */
     public function matchinfo($matchId)
     {
-	$this->template->title = 'Game Details / ' . $matchId;
+	$player1 = "Player 1";
+	$player2 = "Player 2";
+	$this->template->title = 'Game Details / ' . $matchId . ' / ' . $player1 . ' vs ' . $player2;
 
         //$r = new Report_Model();
         $this->template->content = new View('starcraft/matchinfo');

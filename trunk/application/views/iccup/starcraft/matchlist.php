@@ -44,7 +44,7 @@
     <div class="field8 width60">16 : 37</div>
     <div class="field8 width50"><font color="darkred"><b>-170</b></font></div>
     <div class="field8 width110c">
-    <a href="../matchinfo/1294267.html" class="compl game-details" id="game-1294267" style="padding:0">Details</a>
+    <a href="<?php echo hwstats::url_base("matchinfo", 1); ?>" class="compl game-details" id="game-1294267" style="padding:0">Details</a>
 
     <div class="details-anchor" id="game-details-1294267">
 	<div class="popUp-lvl1" style="width:375px;left:-255px">
