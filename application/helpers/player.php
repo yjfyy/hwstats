@@ -66,7 +66,7 @@ class player_Core
      */
     public static function GetCountryByCode($cc2)
     {
-	$country = "Unknown";
+	$country = enum::GetValueByKey('country', $cc2);
 
 	// TODO: switch country codes
 	return $country;
