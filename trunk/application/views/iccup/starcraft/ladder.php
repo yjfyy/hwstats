@@ -28,12 +28,11 @@
 foreach ($players as $p): ?>
     <div class="t-corp3 t-hover-<?php $toggle = ($toggle != 1) ? 1 : 2; echo $toggle; ?> sort-row">
     <div class="field1 width45">#<?php echo $p->rank; ?></div>
-    <div class="field2 width100px"> <div class='off'></div> <div class="b2" title="7123"></div>&nbsp;</div>
+    <div class="field2 width100px"> <div class='<?php echo player::StatusIcon($p->acct_username); ?>'></div> <div class="<?php echo player::RankIcon($p->rating); ?>" title="<?php echo $p->rating; ?>"></div>&nbsp;</div>
     <div class="field2 width210">
-	<div id="flag-container">
-	    <?php echo player::FlagIcon($p->acct_username, $p->acct_lastlogin_ip, $p->cc2); ?>
-	    </div>&nbsp;<a href="<?php echo hwstats::url_base("profile", $p->username); ?>"><?php echo $p->acct_username; ?></a>
-	</div>
+	<?php echo player::FlagIcon($p->acct_username, $p->acct_lastlogin_ip, $p->cc2); ?>
+	&nbsp;<a href="<?php echo hwstats::url_base("profile", $p->username); ?>"><?php echo $p->acct_username; ?></a>
+
     </div>
     <div class="field2 width70p10"><?php echo $p->rating; ?></div>
     <div class="field2 width80c"><?php echo $p->wins; ?>-<?php echo $p->losses; ?></div>
@@ -42,6 +41,6 @@ foreach ($players as $p): ?>
 <?php endforeach ?>
 </div>
 
+</div>
 <div class="clear"></div>
 
-</div>

@@ -10,6 +10,37 @@
  */
 class enum_Core
 {
+    // rank_icon => array( rating_from, rating_to )
+    public static $ranks = array(
+        "d1" => array (1, 999),         // D-
+        "d2" => array (1000, 1249),     // D
+        "d3" => array (1250, 1499),     // D+
+        "c1" => array (1500, 1749),     // C-
+        "c2" => array (1750, 1999),     // C
+        "c3" => array (2000, 2249),     // C+
+        "b1" => array (2250, 2499),     // B-
+        "b2" => array (2500, 2749),     // B
+        "b3" => array (2750, 2999),     // B+
+        "a1" => array (3000, 3249),     // A-
+        "a2" => array (3250, 3499),     // A
+        "a3" => array (3500, 3749),     // A+
+
+    // iccup rating system
+    //        //"e" => array (1, 599),        // E
+    //        "d1" => array (600, 999),       // D-
+    //        "d2" => array (1000, 1999),     // D
+    //        "d3" => array (2000, 2999),     // D+
+    //        "c1" => array (3000, 3999),     // C-
+    //        "c2" => array (4000, 4999),     // C
+    //        "c3" => array (5000, 5999),     // C+
+    //        "b1" => array (6000, 6999),     // B-
+    //        "b2" => array (7000, 7999),     // B
+    //        "b3" => array (8000, 8999),     // B+
+    //        "a1" => array (9000, 9999),     // A-
+    //        "a2" => array (10000, 10999),   // A
+    //        "a3" => array (11000, 11999),   // A+
+    );
+
 
     // game client tags
     public static $clienttag = array (
@@ -36,7 +67,7 @@ class enum_Core
 
     // pvpgn game types
     // http://bnetd.sourcearchive.com/lines/0.4.25-6/bnetd_2game_8c-source.html
-    private static  $gametype = array (
+    private static $gametype = array (
 	    0 => "UNKNOWN",
 	    1 => "melee",
 	    2 => "one on one",
