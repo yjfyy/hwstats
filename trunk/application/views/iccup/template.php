@@ -5,7 +5,7 @@
         <title><?php echo Kohana::config("hwstats.name"); ?> &mdash; <?php echo $title; ?></title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <link rel="stylesheet" type="text/css" href="<?php echo url::base(); ?>files/css/main.css">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
+        <script src="<?php echo url::base(); ?>files/js/jquery.min.js" type="text/javascript"></script>
 
 	<?php if (Kohana::config("hwstats.show_country_flag")): ?>
         <link rel="stylesheet" type="text/css" href="<?php echo url::base(); ?>files/css/flags.css">
