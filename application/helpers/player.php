@@ -44,7 +44,7 @@ class player_Core
         if (Kohana::config("hwstats.show_country_flag"))
         {
             $class = self::FlagClass($cc2);
-            $title = self::GetCountryByCode($cc2);
+            $title = enum::GetCountryName($cc2);
             $data = self::EncodeFlagData($acct_username, $acct_lastlogin_ip, $cc2);
             $output = '<div id="flag-container"><div onclick="LoadFlag(this);" class="'.$class.'" style="float:left;" title="'.$title.'" alt="'.$data.'"></div></div>';
         }
@@ -67,19 +67,6 @@ class player_Core
     {
 	return base64_decode($flag_data);
     }
-
-
-
-    /**
-     * Return country name from country-code-2 (2 symbols)
-     */
-    public static function GetCountryByCode($cc2)
-    {
-	$country = enum::GetValueByKey('country', $cc2);
-	return $country;
-    }
-
-
 
 
     /**
