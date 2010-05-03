@@ -24,7 +24,6 @@ class enum_Core
         "a1" => array (3000, 3249),     // A-
         "a2" => array (3250, 3499),     // A
         "a3" => array (3500, 3749),     // A+
-
     // iccup rating system
     //        //"e" => array (1, 599),        // E
     //        "d1" => array (600, 999),       // D-
@@ -43,7 +42,7 @@ class enum_Core
 
 
     // game client tags
-    public static $clienttag = array (
+    private static $clienttag = array (
 	    0 => "UNKN",
 	    1 => "SEXP",
 	    2 => "STAR",
@@ -58,7 +57,7 @@ class enum_Core
     );
 
     // starcraft races
-    public static $race = array (
+    private static $race = array (
 	    0 => "Unknown",
 	    1 => "Zerg",
 	    2 => "Protoss",
@@ -427,6 +426,119 @@ class enum_Core
 	    return self::${$array}[$key];
 	}
 	return ${$array}[0]; // unknown
+    }
+
+
+
+
+
+    /**
+     * Return game type
+     * If $search_by_key = false, search by value and return key
+     * If $search_by_key = true, search by key and return value
+     */
+    public static function GetGameType($value, $search_by_key = false)
+    {
+	$return = (!$search_by_key)
+			? enum::GetValueByKey('gametype', $value)
+			: enum::GetKeyByValue('gametype', $value);
+	return $return;
+    }
+
+    /**
+     * Return game option
+     * If $search_by_key = false, search by value and return key
+     * If $search_by_key = true, search by key and return value
+     */
+    public static function GetGameOption($value, $search_by_key = false)
+    {
+	$return = (!$search_by_key)
+			? enum::GetValueByKey('gameoption', $value)
+			: enum::GetKeyByValue('gameoption', $value);
+	return $return;
+    }
+
+    /**
+     * Return client tag
+     * If $search_by_key = false, search by value and return key
+     * If $search_by_key = true, search by key and return value
+     */
+    public static function GetClientTag($value, $search_by_key = false)
+    {
+	$return = (!$search_by_key)
+			? enum::GetValueByKey('clienttag', $value)
+			: enum::GetKeyByValue('clienttag', $value);
+	return $return;
+    }
+
+    /**
+     * Return map tile set
+     * If $search_by_key = false, search by value and return key
+     * If $search_by_key = true, search by key and return value
+     */
+    public static function GetMapTileSet($value, $search_by_key = false)
+    {
+	$return = (!$search_by_key)
+			? enum::GetValueByKey('tileset', $value)
+			: enum::GetKeyByValue('tileset', $value);
+	return $return;
+    }
+
+    /**
+     * Return mapauth
+     * If $search_by_key = false, search by value and return key
+     * If $search_by_key = true, search by key and return value
+     */
+    public static function GetMapAuth($value, $search_by_key = false)
+    {
+	$return = (!$search_by_key)
+			? enum::GetValueByKey('mapauth', $value)
+			: enum::GetKeyByValue('mapauth', $value);
+	return $return;
+    }
+
+    /**
+     * Return map tile set
+     * If $search_by_key = false, search by value and return key
+     * If $search_by_key = true, search by key and return value
+     */
+    public static function GetGameResult($value, $search_by_key = false)
+    {
+	$return = (!$search_by_key)
+			? enum::GetValueByKey('gameresult', $value)
+			: enum::GetKeyByValue('gameresult', $value);
+	return $return;
+    }
+
+    /**
+     * Return player race
+     * If $search_by_key = false, search by value and return key
+     * If $search_by_key = true, search by key and return value
+     */
+    public static function GetRace($value, $search_by_key = false)
+    {
+	$return = (!$search_by_key)
+			? enum::GetValueByKey('race', $value)
+			: enum::GetKeyByValue('race', $value);
+	return $return;
+    }
+
+
+
+
+
+
+
+
+
+
+    /**
+     * Return country name from country-code-2 (2 symbols)
+     */
+    public static function GetCountryName($cc2)
+    {
+	$country = enum::GetValueByKey('country', $cc2);
+	return $country;
     }
 
 
